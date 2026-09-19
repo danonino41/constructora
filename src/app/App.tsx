@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail, MapPin, ChevronRight, Facebook, ArrowRight, Star, CheckCircle, Building2, Users, Award, Clock } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin, ChevronRight, Facebook, ArrowRight, Star, CheckCircle, Building2, Users, Award, Clock, BadgeCheck, LandPlot, FileText, Home, Hammer, BedSingle, BedDouble, TrendingUp, PiggyBank, Banknote, MessageCircle, PhoneCall, ShieldCheck, CalendarClock, Sparkles, ArrowLeft, RefreshCw } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import heroBg from "@/imports/VIDEO_RECORRIDO_3D.mp4";
 import img1 from "@/imports/1.png";
@@ -12,6 +13,7 @@ import img6 from "@/imports/6.png";
 const NAV_LINKS = [
   { label: "Inicio", href: "#inicio" },
   { label: "Proyectos", href: "#proyectos" },
+  { label: "Requisitos", href: "#requisitos" },
   { label: "Servicios", href: "#servicios" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Contacto", href: "#contacto" },
@@ -44,6 +46,105 @@ const TESTIMONIALS = [
   { name: "Carlos Ramos", location: "Lima, Perú", text: "Excelente atención desde el primer día. Mi casa quedó exactamente como la veía en los renders. Cumplieron el plazo al 100%.", stars: 5 },
   { name: "María Flores", location: "Ica, Perú", text: "El equipo de Consorcio Constructor me orientó en todo el proceso. Calidad de materiales impresionante para el precio.", stars: 5 },
   { name: "Jorge Mendoza", location: "Arequipa, Perú", text: "Contraté el modelo familiar plus y estoy más que contento. El trato fue siempre profesional y transparente.", stars: 5 },
+];
+
+const QUIZ_PROGRAMS: { id: string; name: string; tagline: string; desc: string; includes: string[]; timeline: string; icon: LucideIcon }[] = [
+  {
+    id: "terreno",
+    name: "Programa Terreno + Construcción",
+    tagline: "De la búsqueda del terreno a la entrega de llaves",
+    desc: "¿Quieres construir pero aún no tienes dónde? Nos encargamos de encontrar el terreno ideal, habilitarlo y construir tu vivienda completa a llave, todo en un solo contrato.",
+    includes: ["Búsqueda y compra del terreno", "Habilitación urbana y saneamiento", "Diseño arquitectónico y renders 3D", "Construcción e instalaciones completas", "Licencias y trámites municipales"],
+    timeline: "10 a 14 meses",
+    icon: LandPlot,
+  },
+  {
+    id: "habilitacion",
+    name: "Programa Habilitación + Construcción",
+    tagline: "Regularizamos tu terreno y construimos encima",
+    desc: "Tienes terreno pero sin título o sin servicios básicos. Regularizamos la situación legal, habilitamos tu terreno y construimos tu casa a llave, en un solo acompañamiento.",
+    includes: ["Saneamiento físico-legal del terreno", "Habilitación urbana (agua, luz, desagüe)", "Licencia de construcción", "Construcción a llave con materiales certificados", "Trámites municipales incluidos"],
+    timeline: "8 a 12 meses",
+    icon: FileText,
+  },
+  {
+    id: "construccion",
+    name: "Programa Construcción a Llave",
+    tagline: "Tu terreno listo, nosotros hacemos todo lo demás",
+    desc: "Tu terreno ya está habilitado y con título. Nosotros nos encargamos del diseño, la construcción, los acabados y la entrega de llaves con plazos garantizados en contrato.",
+    includes: ["Diseño arquitectónico y renders 3D", "Licencias y permisos", "Construcción con materiales certificados", "Acabados e instalaciones completas", "Entrega llave en mano"],
+    timeline: "4 a 6 meses",
+    icon: Home,
+  },
+  {
+    id: "reforzamiento",
+    name: "Programa Reforzamiento y Ampliación",
+    tagline: "Damos nueva vida a tu casa actual",
+    desc: "¿Necesitas reforzar tu vivienda o ampliarla? Evaluamos la estructura actual, reforzamos lo necesario y construimos las nuevas áreas con ingeniería certificada.",
+    includes: ["Evaluación estructural del inmueble", "Diseño del reforzamiento o ampliación", "Licencias y permisos", "Ejecución con ingeniería certificada", "Acabados e instalaciones"],
+    timeline: "8 a 16 semanas según alcance",
+    icon: Hammer,
+  },
+];
+
+const QUIZ_STEPS: {
+  key: string;
+  question: string;
+  hint?: string;
+  options: { label: string; desc?: string; value: string; program?: string; model?: string; icon: LucideIcon }[];
+}[] = [
+  {
+    key: "terreno",
+    question: "¿Con qué terreno cuentas hoy?",
+    hint: "Define el punto de partida de tu proyecto.",
+    options: [
+      { label: "No tengo terreno aún", desc: "Buscamos y habilitamos el terreno por ti", value: "no-tengo", program: "terreno", icon: LandPlot },
+      { label: "Tengo terreno sin habilitar", desc: "Sin título o sin servicios básicos", value: "sin-habilitar", program: "habilitacion", icon: FileText },
+      { label: "Tengo terreno habilitado", desc: "Con título y servicios listos", value: "habilitado", program: "construccion", icon: Home },
+      { label: "Quiero reforzar o ampliar mi casa", desc: "Ya tengo una construcción existente", value: "reforzar", program: "reforzamiento", icon: Hammer },
+    ],
+  },
+  {
+    key: "tipo",
+    question: "¿Qué tipo de proyecto tienes en mente?",
+    hint: "Nos ayuda a recomendar el modelo adecuado.",
+    options: [
+      { label: "Vivienda para mi familia", value: "vivienda", icon: Home },
+      { label: "Segunda vivienda o inversión", value: "inversion", icon: TrendingUp },
+      { label: "Local o negocio propio", value: "negocio", icon: Building2 },
+    ],
+  },
+  {
+    key: "dormitorios",
+    question: "¿Cuántos ambientes necesitas?",
+    hint: "Definimos la superficie y el modelo ideal.",
+    options: [
+      { label: "Estudio / 1 dormitorio", desc: "Para 1 o 2 personas", value: "estudio", model: "Modelo Estudio Premium · 45 m²", icon: BedSingle },
+      { label: "2 dormitorios", desc: "Para parejas o familias pequeñas", value: "familiar", model: "Modelo Familiar Clásico o Plus · 72–80 m²", icon: BedDouble },
+      { label: "3 dormitorios o más", desc: "Familias grandes o espacios amplios", value: "amplio", model: "Plan a medida · desde 80 m²", icon: Home },
+    ],
+  },
+  {
+    key: "financiamiento",
+    question: "¿Cómo planeas financiar tu proyecto?",
+    hint: "Un asesor te explica las opciones disponibles.",
+    options: [
+      { label: "Bono / crédito MIVIVIENDA", value: "mivivienda", icon: ShieldCheck },
+      { label: "Crédito hipotecario o bancario", value: "credito", icon: Banknote },
+      { label: "Ahorros propios", value: "ahorros", icon: PiggyBank },
+      { label: "Necesito orientación", value: "orientacion", icon: MessageCircle },
+    ],
+  },
+  {
+    key: "plazo",
+    question: "¿En qué plazo quisieras iniciar?",
+    hint: "Última pregunta. Depende de ti.",
+    options: [
+      { label: "Este mes", value: "urgente", icon: CalendarClock },
+      { label: "En 3 a 6 meses", value: "pronto", icon: Clock },
+      { label: "Solo estoy explorando opciones", value: "explorando", icon: Sparkles },
+    ],
+  },
 ];
 
 function Navbar() {
@@ -128,7 +229,7 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex flex-col overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <video
           src={heroBg}
@@ -138,11 +239,11 @@ function Hero() {
           playsInline
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/75" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 lg:py-0 lg:grid lg:grid-cols-2 lg:items-center">
-        <div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex-1 flex flex-col justify-center py-28 lg:py-0">
+        <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 border border-primary/30 px-3 py-1 mb-6 bg-white/10 backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.15em" }}>
@@ -150,29 +251,334 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="leading-tight" style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#ffffff", letterSpacing: "-0.01em", textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}>
-            CONSTRUIMOS<br />
-            <span style={{ color: "#f5b700" }}>TU HOGAR</span><br />
-            IDEAL.
+          <h1 className="leading-tight" style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#ffffff", letterSpacing: "-0.01em", textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}>
+            ¿ESTÁS LISTO PARA<br />
+            CONSTRUIR<br />
+            <span style={{ color: "#f5b700" }}>TU HOGAR IDEAL?</span>
           </h1>
 
-          <div className="mt-6 mb-10 flex items-center gap-8">
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "2rem", color: "#f5b700", lineHeight: 1 }}>{s.value}</div>
-                <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", color: "#ffffff", lineHeight: 1.4, opacity: 0.9 }}>{s.label}</div>
-              </div>
-            ))}
+          <p className="mt-6 text-white/90 max-w-xl" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "1.05rem", lineHeight: 1.8 }}>
+            Cuéntanos tu situación en menos de 1 minuto y descubre qué programa te corresponde, tu modelo ideal y si calificas. Asesoría gratuita y sin compromiso.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-9">
+            <a href="#requisitos" className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-semibold transition-all hover:opacity-90 hover:scale-105" style={{ fontFamily: "Barlow Condensed, sans-serif", fontSize: "1.05rem", letterSpacing: "0.08em", borderRadius: "2px" }}>
+              <BadgeCheck size={20} />
+              QUIERO SABER SI CALIFICO
+            </a>
+            <a href="#contacto" className="inline-flex items-center justify-center gap-2 border-2 border-white px-8 py-4 font-semibold text-white hover:bg-white hover:text-primary transition-all" style={{ fontFamily: "Barlow Condensed, sans-serif", fontSize: "1.05rem", letterSpacing: "0.08em", borderRadius: "2px" }}>
+              <Phone size={18} />
+              HABLAR CON UN ASESOR
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative z-10 border-t border-white/20 bg-black/30 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {STATS.map((s) => (
+            <div key={s.label} className="flex items-center gap-3">
+              <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "2rem", color: "#f5b700", lineHeight: 1 }}>{s.value}</div>
+              <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.8rem", color: "#ffffff", lineHeight: 1.4, opacity: 0.9 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function QualificationQuiz() {
+  const [stepIndex, setStepIndex] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [selected, setSelected] = useState<string | null>(null);
+  const [picking, setPicking] = useState(false);
+  const [done, setDone] = useState(false);
+  const [lead, setLead] = useState({ name: "", phone: "", email: "", program: "" });
+  const [leadSent, setLeadSent] = useState(false);
+
+  const step = QUIZ_STEPS[stepIndex];
+  const progress = done ? 100 : (stepIndex / QUIZ_STEPS.length) * 100;
+
+  const choose = (option: { label: string; value: string; program?: string }) => {
+    if (picking) return;
+    const next = { ...answers, [step.key]: option.value };
+    setAnswers(next);
+    setSelected(option.value);
+    setPicking(true);
+    setTimeout(() => {
+      if (stepIndex === QUIZ_STEPS.length - 1) {
+        setDone(true);
+      } else {
+        setStepIndex(stepIndex + 1);
+        setSelected(null);
+      }
+      setPicking(false);
+    }, 280);
+  };
+
+  const goBack = () => {
+    if (stepIndex === 0 || picking) return;
+    setStepIndex(stepIndex - 1);
+    setSelected(answers[QUIZ_STEPS[stepIndex - 1].key] ?? null);
+  };
+
+  const restart = () => {
+    setAnswers({});
+    setStepIndex(0);
+    setSelected(null);
+    setPicking(false);
+    setDone(false);
+    setLeadSent(false);
+    setLead({ name: "", phone: "", email: "", program: "" });
+  };
+
+  const program = QUIZ_PROGRAMS.find((p) => p.id === answers.terreno) ?? QUIZ_PROGRAMS[2];
+
+  const model = answers.dormitorios === "estudio"
+    ? "Modelo Estudio Premium · 45 m²"
+    : answers.dormitorios === "familiar"
+      ? "Modelo Familiar Clásico o Plus · 72–80 m²"
+      : answers.dormitorios === "amplio"
+        ? "Plan a medida · desde 80 m²"
+        : "Se define en tu asesoría";
+
+  const getLabel = (key: string) => {
+    const st = QUIZ_STEPS.find((s) => s.key === key);
+    return st?.options.find((o) => o.value === answers[key])?.label ?? "";
+  };
+
+  const handleLead = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLeadSent(true);
+  };
+
+  const inputStyle = {
+    background: "#1e2330",
+    border: "1px solid rgba(245,183,0,0.15)",
+    borderRadius: "2px",
+    color: "#f0ece4",
+    fontFamily: "Barlow, sans-serif",
+    fontWeight: 400,
+    fontSize: "0.9rem",
+    outline: "none",
+    width: "100%",
+    padding: "0.75rem 1rem",
+  };
+
+  return (
+    <section id="requisitos" className="py-24 overflow-hidden" style={{ background: "#0d0f14" }}>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-[1fr_1.35fr] gap-12 items-start">
+
+          <div className="lg:sticky lg:top-28">
+            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>
+              ¿CALIFICAS? DESCÚBRELO EN 1 MINUTO
+            </span>
+            <h2 className="mt-3" style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.4rem)", color: "#ffffff", lineHeight: 0.98 }}>
+              CUÉNTANOS TU SITUACIÓN Y TE DECIMOS QUÉ PROGRAMA TE CORRESPONDE.
+            </h2>
+            <p className="mt-6 text-gray-400" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.8, fontSize: "0.95rem" }}>
+              Olvídate de las listas de documentos. Responde 5 preguntas rápidas y en segundos sabrás qué programa de construcción encaja contigo y cuál es tu siguiente paso.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-5">
+              {[
+                { icon: BadgeCheck, text: "Te decimos qué programa te corresponde" },
+                { icon: Home, text: "Recomendamos el modelo ideal para ti" },
+                { icon: PhoneCall, text: "Un asesor te contacta gratis y sin compromiso" },
+              ].map((b, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-10 h-10 flex items-center justify-center shrink-0" style={{ background: "rgba(245,183,0,0.12)", borderRadius: "6px" }}>
+                    <b.icon size={18} style={{ color: "#f5b700" }} />
+                  </div>
+                  <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.9rem", color: "#cfd3de" }}>{b.text}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <a href="#proyectos" className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-semibold transition-all hover:opacity-90 hover:scale-105" style={{ fontFamily: "Barlow Condensed, sans-serif", fontSize: "1rem", letterSpacing: "0.1em", borderRadius: "2px" }}>
-              VER PROYECTOS
-              <ArrowRight size={18} className="transition-transform" />
-            </a>
-            <a href="#contacto" className="inline-flex items-center justify-center gap-2 border-2 border-white px-8 py-4 font-semibold text-white hover:bg-white hover:text-primary transition-all" style={{ fontFamily: "Barlow Condensed, sans-serif", fontSize: "1rem", letterSpacing: "0.1em", borderRadius: "2px" }}>
-              COTIZAR GRATIS
-            </a>
+          <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-10" style={{ borderRadius: "16px" }}>
+            {/* Progress header */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-3">
+                <span style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.15em", color: "#1a1a1a" }}>
+                  {done ? "RESULTADO LISTO" : `PASO ${stepIndex + 1} DE ${QUIZ_STEPS.length}`}
+                </span>
+                <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.8rem", color: "#f5b700", fontWeight: 600 }}>{Math.round(progress)}%</span>
+              </div>
+              <div className="h-1.5 w-full" style={{ background: "#ececec", borderRadius: "4px" }}>
+                <div className="h-full transition-all duration-500 ease-out" style={{ width: `${progress}%`, background: "#f5b700", borderRadius: "4px" }} />
+              </div>
+            </div>
+
+            {done ? (
+              <div>
+                <div className="flex flex-wrap items-center gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold" style={{ background: "#f5b700", color: "#0d0f14", fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.08em", borderRadius: "4px" }}>
+                    <BadgeCheck size={14} /> PROPONENTE CALIFICADO
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold border" style={{ borderColor: "#e5e5e5", color: "#666", fontFamily: "Barlow, sans-serif", letterSpacing: "0.04em", borderRadius: "4px" }}>
+                    <Clock size={13} style={{ color: "#f5b700" }} /> {program.timeline}
+                  </span>
+                </div>
+
+                <h3 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(1.6rem, 3vw, 2rem)", color: "#1a1a1a", lineHeight: 1.05 }}>
+                  TU PROGRAMA ES<br />
+                  <span style={{ color: "#f5b700" }}>{program.name}</span>
+                </h3>
+
+                <p className="mt-1" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.9rem", fontWeight: 500, color: "#8a8f9e" }}>
+                  {program.tagline}
+                </p>
+                <p className="mt-4 text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.7, fontSize: "0.92rem" }}>
+                  {program.desc}
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2.5 mt-6">
+                  {program.includes.map((c) => (
+                    <div key={c} className="flex items-center gap-2.5">
+                      <CheckCircle size={15} style={{ color: "#f5b700", flexShrink: 0 }} />
+                      <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#4a4a4a" }}>{c}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-3 mt-6">
+                  <div className="p-4" style={{ background: "#f8f8f8", borderRadius: "8px", border: "1px solid #eceae4" }}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <Home size={15} style={{ color: "#f5b700" }} />
+                      <span style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.12em", color: "#1a1a1a" }}>MODELO SUGERIDO</span>
+                    </div>
+                    <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.88rem", color: "#4a4a4a" }}>{model}</span>
+                  </div>
+                  <div className="p-4" style={{ background: "#f8f8f8", borderRadius: "8px", border: "1px solid #eceae4" }}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <TrendingUp size={15} style={{ color: "#f5b700" }} />
+                      <span style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.12em", color: "#1a1a1a" }}>TU PERFIL</span>
+                    </div>
+                    <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#4a4a4a" }}>
+                      {getLabel("tipo")} · {getLabel("financiamiento")} · {getLabel("plazo")}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-7" style={{ borderTop: "1px dashed #e5e5e5" }}>
+                  {leadSent ? (
+                    <div className="flex flex-col items-center gap-3 py-6 text-center">
+                      <BadgeCheck size={44} style={{ color: "#f5b700" }} />
+                      <h4 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "1.4rem", color: "#1a1a1a" }}>¡LISTO, {lead.name.split(" ")[0] || "AMIGO"}!</h4>
+                      <p style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.9rem", color: "#8a8f9e", maxWidth: 340 }}>
+                        Un asesor se pondrá en contacto contigo en menos de 24 horas para confirmar tu calificación y agendar tu asesoría gratis.
+                      </p>
+                      <a
+                        href="#contacto"
+                        className="inline-flex items-center gap-2 mt-2 bg-primary text-primary-foreground px-6 py-3 font-semibold transition-all hover:opacity-90"
+                        style={{ fontFamily: "Barlow Condensed, sans-serif", fontSize: "0.95rem", letterSpacing: "0.1em", borderRadius: "2px" }}
+                      >
+                        QUEDARME EN CONTACTO <ArrowRight size={16} />
+                      </a>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleLead} className="flex flex-col gap-4">
+                      <h4 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "1.2rem", color: "#1a1a1a" }}>
+                        CONFIRMA TUS DATOS Y TE CONTACTAMOS
+                      </h4>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1">
+                          <label style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "#8a8f9e", letterSpacing: "0.1em" }}>NOMBRE *</label>
+                          <input required style={inputStyle} value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} placeholder="Tu nombre" />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <label style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "#8a8f9e", letterSpacing: "0.1em" }}>TELÉFONO *</label>
+                          <input required style={inputStyle} value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} placeholder="Tu teléfono / WhatsApp" />
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <label style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "#8a8f9e", letterSpacing: "0.1em" }}>CORREO ELECTRÓNICO</label>
+                        <input style={inputStyle} type="email" value={lead.email} onChange={(e) => setLead({ ...lead, email: e.target.value })} placeholder="tucorreo@email.com" />
+                      </div>
+                      <button
+                        type="submit"
+                        className="w-full py-4 font-semibold transition-all hover:opacity-90 flex items-center justify-center gap-2 mt-1"
+                        style={{ background: "#f5b700", color: "#0d0f14", fontFamily: "Barlow Condensed, sans-serif", fontSize: "1rem", letterSpacing: "0.1em", borderRadius: "2px" }}
+                      >
+                        QUIERO QUE UN ASESOR ME LLAME <ArrowRight size={18} />
+                      </button>
+                      <p style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.78rem", color: "#8a8f9e", textAlign: "center" }}>
+                        100% gratis · Sin compromiso · Respuesta en menos de 24 horas
+                      </p>
+                    </form>
+                  )}
+                </div>
+
+                <button
+                  onClick={restart}
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold mx-auto hover:gap-3 transition-all"
+                  style={{ fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.08em", color: "#8a8f9e" }}
+                >
+                  <RefreshCw size={14} /> VOLVER A EMPEZAR EL QUIZ
+                </button>
+              </div>
+            ) : (
+              <div>
+                <div className="mb-7">
+                  <div className="inline-flex items-center gap-2 mb-2" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.15em" }}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    {step.hint ?? "RESPONDE Y CONTINÚA"}
+                  </div>
+                  <h3 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(1.4rem, 3vw, 1.9rem)", color: "#1a1a1a", lineHeight: 1.1 }}>
+                    {step.question}
+                  </h3>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  {step.options.map((o, i) => {
+                    const OptionIcon = o.icon;
+                    const isActive = selected === o.value || answers[step.key] === o.value;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => choose(o)}
+                        className={`w-full text-left p-4 flex items-center gap-4 transition-all duration-200 border-2 hover:scale-[1.01] ${isActive && !done ? "bg-primary/10" : "bg-white hover:bg-gray-50"}`}
+                        style={{
+                          borderRadius: "10px",
+                          borderColor: isActive ? "#f5b700" : "#e5e5e5",
+                        }}
+                      >
+                        <div
+                          className="w-11 h-11 flex items-center justify-center shrink-0 transition-colors"
+                          style={{ background: isActive ? "#f5b700" : "#f6f6f6", borderRadius: "8px" }}
+                        >
+                          <OptionIcon size={20} style={{ color: isActive ? "#0d0f14" : "#8a8f9e" }} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2">
+                            <span style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, fontSize: "1.05rem", color: "#1a1a1a", letterSpacing: "0.02em" }}>{o.label}</span>
+                            <ChevronRight size={18} className={`shrink-0 transition-transform duration-200 ${isActive ? "-rotate-90" : "opacity-40"}`} style={{ color: "#f5b700" }} />
+                          </div>
+                          {o.desc && <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.83rem", color: "#8a8f9e", lineHeight: 1.5, display: "block", marginTop: "0.15rem" }}>{o.desc}</span>}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-6 flex items-center justify-between">
+                  <button
+                    onClick={goBack}
+                    disabled={stepIndex === 0}
+                    className="inline-flex items-center gap-2 text-sm font-semibold transition-all hover:gap-3 disabled:opacity-30"
+                    style={{ fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.08em", color: "#8a8f9e" }}
+                  >
+                    <ArrowLeft size={14} /> ANTERIOR
+                  </button>
+                  <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.8rem", color: "#b5b5b5" }}>
+                    Selecciona para continuar
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -614,6 +1020,7 @@ export default function App() {
     <div className="min-h-screen bg-white dark:bg-[#0d0f14]" style={{ fontFamily: "Barlow, sans-serif" }}>
       <Navbar />
       <Hero />
+      <QualificationQuiz />
       <Projects />
       <VideoTour />
       <Services />

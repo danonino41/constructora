@@ -36,11 +36,23 @@ const SERVICES = [
 ];
 
 const STATS = [
-  { value: "150+", label: "Viviendas entregadas" },
-  { value: "12", label: "Años de experiencia" },
-  { value: "98%", label: "Clientes satisfechos" },
-  { value: "8", label: "Provincias atendidas" },
+  { value: "3,367", label: "Viviendas construidas a nivel nacional" },
+  { value: "11", label: "Departamentos atendidos" },
+  { value: "+10", label: "Años de experiencia" },
+  { value: "1ª", label: "Empresa en entregar viviendas tras el Niño Costero" },
 ];
+
+const CONTACT = {
+  phones: ["993 611 523", "937 202 783", "960 989 470"],
+  email: "contacto@consorcioconstructor.com",
+  facebook: "https://www.facebook.com/consorcioconstructorperu/",
+  tiktok: "https://www.tiktok.com/@consorcioconstructor",
+  sedes: [
+    { city: "Lima", address: "Av. Próceres de Huandoy Mz. C Lt. 13, 3er Piso, Los Olivos", map: "https://maps.app.goo.gl/mhcXXkTqkGnoRnbD6" },
+    { city: "Ica", address: "Calle 20 Mz M, Lotes 19, 20 y 21, Urb. Valle Esmeralda, Pueblo Nuevo", map: "https://maps.app.goo.gl/5RfGWYXHLqX3Zhwb8" },
+    { city: "Lambayeque", address: "Av. Augusto B. Leguía N° 190, Olmos", map: "https://maps.app.goo.gl/Adqc457dxT7dMjDeA" },
+  ],
+};
 
 const TESTIMONIALS = [
   { name: "Carlos Ramos", location: "Lima, Perú", text: "Excelente atención desde el primer día. Mi casa quedó exactamente como la veía en los renders. Cumplieron el plazo al 100%.", stars: 5 },
@@ -247,7 +259,7 @@ function Hero() {
           <div className="inline-flex items-center gap-2 border border-primary/30 px-3 py-1 mb-6 bg-white/10 backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.15em" }}>
-              CONSTRUCTORA LÍDER EN PERÚ
+              TECHO PROPIO EN 11 DEPARTAMENTOS
             </span>
           </div>
 
@@ -596,7 +608,7 @@ function Projects() {
           <div>
             <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>MODELOS DE VIVIENDA</span>
             <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
-              NUESTROS<br />PROYECTOS
+              ELIGE EL MODELO<br />PARA TU FAMILIA
             </h2>
           </div>
           <p className="text-gray-600 max-w-sm" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.7, fontSize: "0.95rem" }}>
@@ -730,20 +742,20 @@ function About() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>QUIÉNES SOMOS</span>
+            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>CÓMO TE AYUDAMOS</span>
             <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
-              CONSTRUIMOS<br />MÁS QUE CASAS,<br />
-              <span style={{ color: "#f5b700" }}>CONSTRUIMOS FUTUROS.</span>
+              AYUDAMOS A TU FAMILIA<br />A ACCEDER A UNA<br />
+              <span style={{ color: "#f5b700" }}>VIVIENDA SEGURA.</span>
             </h2>
             <p className="mt-6 text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.8, fontSize: "0.95rem" }}>
-              Somos una empresa peruana con más de 12 años de experiencia en el sector construcción. Hemos entregado más de 150 viviendas en todo el territorio nacional, desde Lima hasta provincias, con el compromiso de calidad y transparencia que nos caracteriza.
+              Sabemos que tener casa propia es una de las decisiones más importantes para tu familia. Por eso te acompañamos en todo el camino: te orientamos para postular al Bono Techo Propio, nos encargamos de los trámites y construimos tu vivienda hasta entregarte las llaves.
             </p>
             <p className="mt-4 text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.8, fontSize: "0.95rem" }}>
-              Nuestro equipo de ingenieros y arquitectos trabaja contigo desde la primera piedra hasta la entrega de llaves, asegurando que cada etapa cumpla con los más altos estándares de construcción.
+              No lo haces solo: nuestro equipo de ingenieros y arquitectos trabaja contigo en cada etapa. Ya lo hicimos con 3,367 familias en 11 departamentos del país, a lo largo de más de 10 años.
             </p>
 
             <div className="mt-8 flex flex-col gap-3">
-              {["Materiales certificados de primera calidad", "Arquitectos e ingenieros colegiados", "Garantía post-entrega incluida", "Financiamiento flexible disponible"].map((item) => (
+              {["Tu casa se construye con materiales certificados de primera calidad", "Te asesoran arquitectos e ingenieros colegiados", "Tu vivienda cuenta con garantía post-entrega", "Accedes a opciones de financiamiento flexible"].map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <CheckCircle size={16} style={{ color: "#f5b700", flexShrink: 0 }} />
                   <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.9rem", color: "#666666" }}>{item}</span>
@@ -772,7 +784,7 @@ function Testimonials() {
         <div className="text-center mb-14">
           <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>LO QUE DICEN</span>
           <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
-            NUESTROS CLIENTES
+            FAMILIAS COMO LA TUYA
           </h2>
         </div>
 
@@ -830,46 +842,61 @@ function Contact() {
           <div>
             <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>HABLEMOS</span>
             <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
-              COTIZA TU<br />VIVIENDA<br />
-              <span style={{ color: "#f5b700" }}>GRATIS.</span>
+              TU CASA PROPIA<br />EMPIEZA CON<br />
+              <span style={{ color: "#f5b700" }}>UNA LLAMADA.</span>
             </h2>
             <p className="mt-6 text-muted-foreground" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.8, fontSize: "0.95rem" }}>
               Contáctanos hoy y recibe una cotización personalizada sin compromiso. Nuestro equipo te responderá en menos de 24 horas.
             </p>
 
-            <div className="mt-10 flex flex-col gap-5">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center" style={{ background: "rgba(245,183,0,0.1)" }}>
+            <div className="mt-10 flex flex-col gap-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0" style={{ background: "rgba(245,183,0,0.1)" }}>
                   <Phone size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
                   <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Llámanos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>+51 987 654 321</div>
+                  <div className="flex flex-col gap-0.5 mt-0.5">
+                    {CONTACT.phones.map((p) => (
+                      <a key={p} href={`tel:+51${p.replace(/\s/g, "")}`} className="hover:text-primary transition-colors" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>
+                        {p}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center" style={{ background: "rgba(245,183,0,0.1)" }}>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0" style={{ background: "rgba(245,183,0,0.1)" }}>
                   <Mail size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
                   <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Escríbenos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>consorcioconstructormkt@gmail.com</div>
+                  <a href={`mailto:${CONTACT.email}`} className="hover:text-primary transition-colors break-all" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>
+                    {CONTACT.email}
+                  </a>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center" style={{ background: "rgba(245,183,0,0.1)" }}>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0" style={{ background: "rgba(245,183,0,0.1)" }}>
                   <MapPin size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
                   <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Visítanos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Lima, Perú</div>
+                  <div className="flex flex-col gap-2 mt-0.5">
+                    {CONTACT.sedes.map((s) => (
+                      <a key={s.city} href={s.map} target="_blank" rel="noopener noreferrer" className="group" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e", lineHeight: 1.5 }}>
+                        <span style={{ fontWeight: 600, color: "#1a1a1a" }}>{s.city}:</span>{" "}
+                        <span className="group-hover:text-primary transition-colors">{s.address}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 flex gap-3">
               <a
-                href="https://www.facebook.com"
+                href={CONTACT.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 font-semibold text-sm transition-opacity hover:opacity-80"
@@ -878,7 +905,7 @@ function Contact() {
                 <Facebook size={16} /> FACEBOOK
               </a>
               <a
-                href="https://www.tiktok.com"
+                href={CONTACT.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 font-semibold text-sm transition-opacity hover:opacity-80"
@@ -968,7 +995,7 @@ function Footer() {
               </div>
             </div>
             <p style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "0.85rem", color: "#666666", lineHeight: 1.7 }}>
-              Construyendo el Perú de hoy para las familias del mañana. Calidad, compromiso y confianza en cada proyecto.
+              Ayudamos a las familias peruanas a acceder a una vivienda segura. Calidad, compromiso y confianza en cada proyecto.
             </p>
           </div>
 
@@ -986,14 +1013,14 @@ function Footer() {
           <div>
             <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", letterSpacing: "0.1em", marginBottom: "1rem", fontSize: "0.85rem" }}>CONTACTO</div>
             <div className="flex flex-col gap-2">
-              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>consorcioconstructormkt@gmail.com</span>
-              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>+51 987 654 321</span>
-              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>Lima, Perú</span>
+              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>{CONTACT.email}</span>
+              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>{CONTACT.phones.join(" / ")}</span>
+              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>{CONTACT.sedes.map((s) => s.city).join(" · ")}</span>
               <div className="flex gap-3 mt-3">
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary transition-colors">
+                <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-primary transition-colors">
                   <Facebook size={18} />
                 </a>
-                <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary transition-colors">
+                <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-gray-600 hover:text-primary transition-colors">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.65a8.26 8.26 0 0 0 4.83 1.56V6.77a4.85 4.85 0 0 1-1.06-.08z"/></svg>
                 </a>
               </div>
@@ -1003,11 +1030,11 @@ function Footer() {
 
         <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.78rem" }}>
-            © 2025 Consorcio Constructor. Todos los derechos reservados.
+            © {new Date().getFullYear()} Consorcio Constructor. Todos los derechos reservados.
           </span>
           <div className="flex items-center gap-2">
             <Users size={14} className="text-primary" />
-            <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.78rem" }}>Más de 150 familias confían en nosotros</span>
+            <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.78rem" }}>3,367 familias ya tienen su vivienda con nosotros</span>
           </div>
         </div>
       </div>

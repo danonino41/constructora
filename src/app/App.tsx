@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, MapPin, ChevronRight, Facebook, ArrowRight, Star, CheckCircle, Building2, Users, Award, Clock, BadgeCheck, LandPlot, FileText, Home, Hammer, BedSingle, BedDouble, TrendingUp, PiggyBank, Banknote, MessageCircle, PhoneCall, ShieldCheck, CalendarClock, Sparkles, ArrowLeft, RefreshCw } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+import logo from "@/imports/logo.png";
 import heroBg from "@/imports/VIDEO_RECORRIDO_3D.mp4";
 import img1 from "@/imports/1.png";
 import img2 from "@/imports/2.png";
@@ -168,13 +169,11 @@ function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#inicio" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary flex items-center justify-center font-bold text-primary-foreground" style={{ fontFamily: "Barlow Condensed, sans-serif", fontSize: "1.1rem" }}>
-            CC
-          </div>
+          <img src={logo} alt="Consorcio Constructor" className="h-10 w-auto" style={{ height: "2.5rem", width: "auto", display: "block" }} />
           <div>
-            <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "1.1rem", color: scrolled ? "#000000" : "#ffffff", letterSpacing: "0.05em", lineHeight: 1, transition: "color 0.3s ease" }}>
-              CONSORCIO
-            </div>
+              <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "1.1rem", color: scrolled ? "#0A429C" : "#ffffff", letterSpacing: "0.05em", lineHeight: 1, transition: "color 0.3s ease" }}>
+                CONSORCIO
+              </div>
             <div style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "0.65rem", color: "#f5b700", letterSpacing: "0.2em", transition: "color 0.3s ease" }}>
               CONSTRUCTOR
             </div>
@@ -873,7 +872,7 @@ function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 font-semibold text-sm transition-opacity hover:opacity-80"
-                style={{ background: "#1877f2", color: "#fff", fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.05em", borderRadius: "2px" }}
+                style={{ background: "#0A429C", color: "#fff", fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.05em", borderRadius: "2px" }}
               >
                 <Facebook size={16} /> FACEBOOK
               </a>
@@ -961,9 +960,11 @@ function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 bg-primary flex items-center justify-center font-bold text-primary-foreground rounded-lg" style={{ fontFamily: "Barlow Condensed, sans-serif" }}>CC</div>
+              <div style={{ width: "2.25rem", height: "2.25rem", overflow: "hidden", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", background: "#f5f5f5" }}>
+                <img src={logo} alt="Consorcio Constructor" style={{ height: "1.5rem", width: "auto", display: "block" }} />
+              </div>
               <div>
-                <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, color: "#1a1a1a", fontSize: "1rem", lineHeight: 1 }}>CONSORCIO</div>
+                <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, color: "#0A429C", fontSize: "1rem", lineHeight: 1 }}>CONSORCIO</div>
                 <div style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "0.6rem", color: "#f5b700", letterSpacing: "0.2em" }}>CONSTRUCTOR</div>
               </div>
             </div>

@@ -10,6 +10,7 @@ import img3 from "@/imports/3.png";
 import img4 from "@/imports/4.png";
 import img5 from "@/imports/5.png";
 import img6 from "@/imports/6.png";
+import logo from "@/imports/logo.png";
 import equipoEnObra from "@/imports/equipo-en-obra.jpg";
 import evidenciaObra from "@/imports/evidencia-obra.jpg";
 import evidenciaAvance from "@/imports/evidencia-avance.jpg";

@@ -10,6 +10,7 @@ import img3 from "@/imports/3.png";
 import img4 from "@/imports/4.png";
 import img5 from "@/imports/5.png";
 import img6 from "@/imports/6.png";
+import logo from "@/imports/logo.png";
 
 const NAV_LINKS = [
   { label: "Inicio", href: "#inicio" },
@@ -181,17 +182,7 @@ function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#inicio" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary flex items-center justify-center font-bold text-primary-foreground" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "1.1rem" }}>
-            CC
-          </div>
-          <div>
-            <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.1rem", color: scrolled ? "#000000" : "#ffffff", letterSpacing: "0.05em", lineHeight: 1, transition: "color 0.3s ease" }}>
-              CONSORCIO
-            </div>
-            <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.65rem", color: "#f5b700", letterSpacing: "0.2em", transition: "color 0.3s ease" }}>
-              CONSTRUCTOR
-            </div>
-          </div>
+          <img src={logo} alt="Consorcio Constructor" className="h-12 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -974,11 +965,7 @@ function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 bg-primary flex items-center justify-center font-bold text-primary-foreground rounded-lg" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }}>CC</div>
-              <div>
-                <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#1a1a1a", fontSize: "1rem", lineHeight: 1 }}>CONSORCIO</div>
-                <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.6rem", color: "#f5b700", letterSpacing: "0.2em" }}>CONSTRUCTOR</div>
-              </div>
+              <img src={logo} alt="Consorcio Constructor" className="h-10 w-auto" />
             </div>
             <p style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "0.85rem", color: "#666666", lineHeight: 1.7 }}>
               Construyendo el Perú de hoy para las familias del mañana. Calidad, compromiso y confianza en cada proyecto.

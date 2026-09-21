@@ -834,8 +834,8 @@ function Contact() {
           <div>
             <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>HABLEMOS</span>
             <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
-              COTIZA TU<br />VIVIENDA<br />
-              <span style={{ color: "#f5b700" }}>GRATIS.</span>
+              TU CASA PROPIA<br />EMPIEZA CON<br />
+              <span style={{ color: "#f5b700" }}>UNA LLAMADA.</span>
             </h2>
             <p className="mt-6 text-muted-foreground" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem" }}>
               Contáctanos hoy y recibe una cotización personalizada sin compromiso. Nuestro equipo te responderá en menos de 24 horas.
@@ -848,16 +848,18 @@ function Contact() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Llámanos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>+51 987 654 321</div>
+                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>993 611 523</div>
+                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>937 202 783</div>
+                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>960 989 470</div>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center" style={{ background: "rgba(245,183,0,0.1)" }}>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 flex items-center justify-center shrink-0" style={{ background: "rgba(245,183,0,0.1)" }}>
                   <Mail size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
                   <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Escríbenos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>consorcioconstructormkt@gmail.com</div>
+                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>contacto@consorcioconstructor.com</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -866,7 +868,9 @@ function Contact() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Visítanos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Lima, Perú</div>
+                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Lima: Av. Próceres de Huandoy Mz. C Lt. 13, 3er Piso, Los Olivos</div>
+                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Ica: Calle 20 Mz M, Lotes 19, 20 y 21, Urb. Valle Esmeralda, Pueblo Nuevo</div>
+                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Lambayeque: Av. Augusto B. Leguía N° 190, Olmos</div>
                 </div>
               </div>
             </div>

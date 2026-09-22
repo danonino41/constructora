@@ -59,43 +59,43 @@ const FB_POSTS = [
     title: "¡Construye tu hogar con confianza y respaldo! 🚀",
     text: "Imagina abrir la puerta de tu propia casa, ese espacio que siempre soñaste, construido con calidad, seguridad y rapidez. En Consorcio Constructor llevamos más de 10 años haciendo realidad los sueños de cientos de familias, brindando viviendas dignas y accesibles. Contáctanos ahora: wa.me/51993611523 – wa.me/51937202783 – wa.me/51960989470.",
     url: "https://web.facebook.com/photo/?fbid=122119015778799983&set=pb.61573999493709.-2207520000",
-    img: "/PublicacionesFB/adasdasdasdas.jpeg",
+    img: "/PublicacionesFB/IMG1.jpeg",
   },
   {
     title: "Estamos aquí para hacer tu sueño posible 🫂",
     text: "Con 2944 viviendas construidas en todo el país, seguimos haciendo realidad el sueño de muchas familias. Seguros, rápidos y con calidad garantizada. ¡Tu hogar está más cerca de lo que piensas! Contáctanos: wa.me/51993611523 – wa.me/51937202783 – wa.me/51960989470.",
     url: "https://web.facebook.com/photo/?fbid=122117502008799983&set=pb.61573999493709.-2207520000",
-    img: "/PublicacionesFB/arrewrerew.jpeg",
+    img: "/PublicacionesFB/IMG2.jpeg",
   },
   {
     title: "HACEMOS REALIDAD TU SUEÑO DE VIVIENDA ✨",
     text: "Cada entrega es un paso hacia un futuro mejor. En Consorcio Constructor trabajamos para que más familias accedan a un hogar seguro, cómodo y accesible. Contáctanos: wa.me/51993611523 – wa.me/51937202783 – wa.me/51960989470.",
     url: "https://web.facebook.com/photo/?fbid=122111363198799983&set=pb.61573999493709.-2207520000",
-    img: "/PublicacionesFB/asdasdasdas.jpeg",
+    img: "/PublicacionesFB/IMG3.jpeg",
   },
   {
     title: "¡Tu nuevo hogar te espera! 🏡",
     text: "Si cumples con estos requisitos, puedes postular. ¡Es momento de construir tu futuro! Comúnícate con nosotros: wa.me/51993611523 – wa.me/51937202783 – wa.me/51960989470.",
     url: "https://web.facebook.com/photo/?fbid=122095834400799983&set=pb.61573999493709.-2207520000",
-    img: "/PublicacionesFB/asdasdasdasd.jpeg",
+    img: "/PublicacionesFB/IMG4.jpeg",
   },
   {
     title: "CONSTRUIMOS SUEÑOS, ENTREGAMOS HOGARES ✨",
     text: "Cada llave que entregamos representa un nuevo comienzo para una familia. Tu hogar propio está más cerca de lo que imaginas. ¡Haz realidad tu sueño hoy mismo! Contáctanos: wa.me/51993611523 – wa.me/51937202783 – wa.me/51960989470.",
     url: "https://web.facebook.com/photo/?fbid=122095635008799983&set=pb.61573999493709.-2207520000",
-    img: "/PublicacionesFB/gefsdfdqfq.jpeg",
+    img: "/PublicacionesFB/IMG5.jpeg",
   },
   {
     title: "Con el Bono Familiar Habitacional accede a tu vivienda 💙",
     text: "Con el Bono Familiar Habitacional, accede a una vivienda segura, moderna y bien ubicada. ¡Tu hogar está más cerca de lo que imaginas! Contáctanos: wa.me/51993611523 – wa.me/51937202783 – wa.me/51960989470.",
     url: "https://web.facebook.com/photo/?fbid=122094962336799983&set=pb.61573999493709.-2207520000",
-    img: "/PublicacionesFB/sasdasdad.jpeg",
+    img: "/PublicacionesFB/IMG6.jpeg",
   },
   {
     title: "¡BIENVENIDOS A SU NUEVO HOGAR! 🏡✨",
     text: "Cumplimos el sueño de miles de familias de tener un techo propio y un nuevo comienzo. Contáctanos y haz realidad tu hogar: wa.me/51993611523 – wa.me/51937202783 – wa.me/51960989470.",
     url: "https://web.facebook.com/photo/?fbid=122094403352799983&set=pb.61573999493709.-2207520000",
-    img: "/PublicacionesFB/WhatsApp Image 2026-09-21 at 6.08.27 PM.jpeg",
+    img: "/PublicacionesFB/IMG7.jpeg",
   },
 ];
 
@@ -1041,10 +1041,10 @@ function ReelCard({ slide }: { slide: ReelSlide }) {
         </span>
       </a>
       <div className="p-6">
-        <h3 className="line-clamp-2" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.05rem", color: "#1a1a1a", lineHeight: 1.3, letterSpacing: "0.01em" }}>
+        <h3 className="line-clamp-2" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.05rem", color: "#4a4a49", lineHeight: 1.3, letterSpacing: "0.01em" }}>
           {slide.title}
         </h3>
-        <p className="mt-3 text-gray-600 line-clamp-3" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.88rem", lineHeight: 1.7 }}>
+        <p className="mt-3 line-clamp-3" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.88rem", color: "#4a4a49", lineHeight: 1.7 }}>
           {slide.text}
         </p>
         <a

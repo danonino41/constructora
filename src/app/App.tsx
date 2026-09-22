@@ -287,7 +287,7 @@ function Hero() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 border border-primary/30 px-3 py-1 mb-6 bg-white/10 backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.15em" }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.15em" }}>
               CONSTRUCTORA LÍDER EN PERÚ
             </span>
           </div>
@@ -443,7 +443,7 @@ function QualificationQuiz() {
             {/* Progress header */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-3">
-                <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.15em", color: "#1a1a1a" }}>
+                <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.15em", color: "#4a4a49" }}>
                   {done ? "RESULTADO LISTO" : `PASO ${stepIndex + 1} DE ${QUIZ_STEPS.length}`}
                 </span>
                 <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.8rem", color: "#f5b700", fontWeight: 700 }}>{Math.round(progress)}%</span>
@@ -464,7 +464,7 @@ function QualificationQuiz() {
                   </span>
                 </div>
 
-                <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(1.6rem, 3vw, 2rem)", color: "#1a1a1a", lineHeight: 1.05 }}>
+                <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(1.6rem, 3vw, 2rem)", color: "#4a4a49", lineHeight: 1.05 }}>
                   TU PROGRAMA ES<br />
                   <span style={{ color: "#f5b700" }}>{program.name}</span>
                 </h3>
@@ -489,14 +489,14 @@ function QualificationQuiz() {
                   <div className="p-4" style={{ background: "#f8f8f8", borderRadius: "8px", border: "1px solid #eceae4" }}>
                     <div className="flex items-center gap-2 mb-1">
                       <Home size={15} style={{ color: "#f5b700" }} />
-                      <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.12em", color: "#1a1a1a" }}>MODELO SUGERIDO</span>
+                      <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.12em", color: "#4a4a49" }}>MODELO SUGERIDO</span>
                     </div>
                     <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.88rem", color: "#4a4a4a" }}>{model}</span>
                   </div>
                   <div className="p-4" style={{ background: "#f8f8f8", borderRadius: "8px", border: "1px solid #eceae4" }}>
                     <div className="flex items-center gap-2 mb-1">
                       <TrendingUp size={15} style={{ color: "#f5b700" }} />
-                      <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.12em", color: "#1a1a1a" }}>TU PERFIL</span>
+                      <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.12em", color: "#4a4a49" }}>TU PERFIL</span>
                     </div>
                     <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#4a4a4a" }}>
                       {getLabel("tipo")} · {getLabel("financiamiento")} · {getLabel("plazo")}
@@ -508,7 +508,7 @@ function QualificationQuiz() {
                   {leadSent ? (
                     <div className="flex flex-col items-center gap-3 py-6 text-center">
                       <BadgeCheck size={44} style={{ color: "#f5b700" }} />
-                      <h4 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.4rem", color: "#1a1a1a" }}>¡LISTO, {lead.name.split(" ")[0] || "AMIGO"}!</h4>
+                      <h4 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.4rem", color: "#4a4a49" }}>¡LISTO, {lead.name.split(" ")[0] || "AMIGO"}!</h4>
                       <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", color: "#8a8f9e", maxWidth: 340 }}>
                         Un asesor se pondrá en contacto contigo en menos de 24 horas para confirmar tu calificación y agendar tu asesoría gratis.
                       </p>
@@ -522,7 +522,7 @@ function QualificationQuiz() {
                     </div>
                   ) : (
                     <form onSubmit={handleLead} className="flex flex-col gap-4">
-                      <h4 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.2rem", color: "#1a1a1a" }}>
+                      <h4 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.2rem", color: "#4a4a49" }}>
                         CONFIRMA TUS DATOS Y TE CONTACTAMOS
                       </h4>
                       <div className="grid sm:grid-cols-2 gap-4">
@@ -568,7 +568,7 @@ function QualificationQuiz() {
                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                     {step.hint ?? "RESPONDE Y CONTINÚA"}
                   </div>
-                  <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(1.4rem, 3vw, 1.9rem)", color: "#1a1a1a", lineHeight: 1.1 }}>
+                  <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(1.4rem, 3vw, 1.9rem)", color: "#4a4a49", lineHeight: 1.1 }}>
                     {step.question}
                   </h3>
                 </div>
@@ -595,7 +595,7 @@ function QualificationQuiz() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between gap-2">
-                            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.05rem", color: "#1a1a1a", letterSpacing: "0.02em" }}>{o.label}</span>
+                            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.05rem", color: "#4a4a49", letterSpacing: "0.02em" }}>{o.label}</span>
                             <ChevronRight size={18} className={`shrink-0 transition-transform duration-200 ${isActive ? "-rotate-90" : "opacity-40"}`} style={{ color: "#f5b700" }} />
                           </div>
                           {o.desc && <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.83rem", color: "#8a8f9e", lineHeight: 1.5, display: "block", marginTop: "0.15rem" }}>{o.desc}</span>}
@@ -668,7 +668,7 @@ function PlanosModal({ model, onClose }: { model: ModelItem; onClose: () => void
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 py-2 shrink-0" style={{ background: "#f8f8f8", borderBottom: "1px solid #ececec" }}>
-          <h3 className="truncate pr-3" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", fontWeight: 600, color: "#1a1a1a" }}>
+          <h3 className="truncate pr-3" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", fontWeight: 600, color: "#4a4a49" }}>
             {model.name}
           </h3>
           <div className="flex items-center gap-2 shrink-0">
@@ -677,7 +677,7 @@ function PlanosModal({ model, onClose }: { model: ModelItem; onClose: () => void
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-1 rounded-full text-xs font-bold transition-colors"
-              style={{ background: "rgba(245,183,0,0.15)", color: "#1a1a1a", fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }}
+              style={{ background: "rgba(245,183,0,0.15)", color: "#4a4a49", fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }}
             >
               ABRIR EN OTRA PESTAÑA
             </a>
@@ -706,8 +706,8 @@ function Projects() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>MODELOS DE VIVIENDA</span>
-            <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>MODELOS DE VIVIENDA</span>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               NUESTROS<br />PROYECTOS
             </h2>
           </div>
@@ -726,7 +726,7 @@ function Projects() {
                     <div className="w-10 h-10 flex items-center justify-center shrink-0" style={{ background: "#f5b700", color: "#0d0f14", borderRadius: "8px" }}>
                       <HeaderIcon size={20} />
                     </div>
-                    <h3 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "1.6rem", color: "#1a1a1a", letterSpacing: "0.04em", margin: 0 }}>
+                    <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.6rem", color: "#4a4a49", letterSpacing: "0.04em", margin: 0 }}>
                       {m.title}
                     </h3>
                   </div>
@@ -752,18 +752,18 @@ function Projects() {
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.1rem", color: "#1a1a1a", letterSpacing: "0.02em" }}>{m.name}</h3>
+                    <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.1rem", color: "#4a4a49", letterSpacing: "0.02em" }}>{m.name}</h3>
                     <p className="mt-2 text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.88rem", lineHeight: 1.65 }}>{m.desc}</p>
                   </div>
                   <div>
                     <div className="grid grid-cols-2 gap-4 mt-4 pt-4" style={{ borderTop: "1px solid #eceae4" }}>
                       <div className="flex items-center gap-2">
                         <Maximize2 size={16} style={{ color: "#f5b700", flexShrink: 0 }} />
-                        <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", fontWeight: 600, color: "#1a1a1a" }}>{m.area}</span>
+                        <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", fontWeight: 600, color: "#4a4a49" }}>{m.area}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <FeatIcon size={16} style={{ color: "#f5b700", flexShrink: 0 }} />
-                        <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", fontWeight: 600, color: "#1a1a1a" }}>{m.feat}</span>
+                        <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", fontWeight: 600, color: "#4a4a49" }}>{m.feat}</span>
                       </div>
                     </div>
                     <button
@@ -794,7 +794,7 @@ function VideoTour() {
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <div>
             <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 400, color: "#f5b700", letterSpacing: "0.2em" }}>RECORRIDO VIRTUAL</span>
-            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               CONOCE TU<br />FUTURA CASA<br />
               <span style={{ color: "#f5b700" }}>EN 3D.</span>
             </h2>
@@ -833,7 +833,7 @@ function Services() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 400, color: "#f5b700", letterSpacing: "0.2em" }}>LO QUE HACEMOS</span>
-          <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+          <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
             NUESTROS SERVICIOS
           </h2>
         </div>
@@ -848,10 +848,10 @@ function Services() {
               <div className="w-12 h-12 mb-5 flex items-center justify-center bg-yellow-50 rounded-lg">
                 <s.icon size={22} style={{ color: "#f5b700" }} />
               </div>
-              <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.1rem", color: "#1a1a1a", letterSpacing: "0.02em", marginBottom: "0.5rem" }}>
+              <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.1rem", color: "#4a4a49", letterSpacing: "0.02em", marginBottom: "0.5rem" }}>
                 {s.title}
               </h3>
-              <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.88rem", color: "#666666", lineHeight: 1.7 }}>
+              <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.88rem", color: "#4a4a49", lineHeight: 1.7 }}>
                 {s.desc}
               </p>
             </div>
@@ -887,15 +887,15 @@ function About() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>QUIÉNES SOMOS</span>
-            <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>QUIÉNES SOMOS</span>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               AYUDAMOS A TU FAMILIA<br />A ACCEDER A UNA<br />
               <span style={{ color: "#f5b700" }}>VIVIENDA SEGURA.</span>
             </h2>
-            <p className="mt-6 text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.8, fontSize: "0.95rem" }}>
+            <p className="mt-6 text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem" }}>
               Sabemos que tener casa propia es una de las decisiones más importantes para tu familia. Por eso te acompañamos en todo el camino: te orientamos para postular al Bono Techo Propio, nos encargamos de los trámites y construimos tu vivienda hasta entregarte las llaves.
             </p>
-            <p className="mt-4 text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.8, fontSize: "0.95rem" }}>
+            <p className="mt-4 text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem" }}>
               No lo haces solo: nuestro equipo de ingenieros y arquitectos trabaja contigo en cada etapa. Ya lo hicimos con 3,367 familias en 11 departamentos del país, a lo largo de más de 10 años.
             </p>
 
@@ -903,7 +903,7 @@ function About() {
               {["Tu casa se construye con materiales certificados de primera calidad", "Te asesoran arquitectos e ingenieros colegiados", "Tu vivienda cuenta con garantía post-entrega", "Accedes a opciones de financiamiento flexible"].map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <CheckCircle size={16} style={{ color: "#f5b700", flexShrink: 0 }} />
-                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", color: "#666666" }}>{item}</span>
+                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", color: "#4a4a49" }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -913,8 +913,8 @@ function About() {
             <div className="overflow-hidden rounded-lg shadow-2xl" style={{ border: "6px solid #ffffff", transform: "rotate(1.2deg)" }}>
               <img src={equipoEnObra} alt="Nuestro equipo en obra" className="w-full h-80 object-cover" />
             </div>
-            <div className="mt-4 ml-6" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.82rem", color: "#1a1a1a" }}>
-              <span style={{ fontFamily: "Barlow, sans-serif", fontWeight: 700, color: "#173B66" }}>Nuestro equipo en obra, Lima — 2026</span>
+            <div className="mt-4 ml-6" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.82rem", color: "#4a4a49" }}>
+              <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#173B66" }}>Nuestro equipo en obra, Lima — 2026</span>
             </div>
           </div>
         </div>
@@ -922,24 +922,24 @@ function About() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-20">
           {stats.map((s) => (
             <div key={s.label} className="text-center p-8" style={{ background: "#f8f8f8", borderRadius: "8px", border: "1px solid #eceae4" }}>
-              <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "2.6rem", color: "#f5b700", lineHeight: 1 }}>{s.value}</div>
-              <div className="mt-2" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#666666", lineHeight: 1.5 }}>{s.label}</div>
+              <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "2.6rem", color: "#f5b700", lineHeight: 1 }}>{s.value}</div>
+              <div className="mt-2" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#4a4a49", lineHeight: 1.5 }}>{s.label}</div>
             </div>
           ))}
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-20">
           <div className="p-10" style={{ background: "#173B66", borderRadius: "8px" }}>
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 700, color: "#f5b700", letterSpacing: "0.2em" }}>NUESTRA RAZÓN DE SER</span>
-            <h3 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "2rem", color: "#ffffff", marginTop: "0.5rem", marginBottom: "1rem" }}>Misión</h3>
-            <p style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "0.98rem", color: "#eef1f5", lineHeight: 1.8, margin: 0 }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 700, color: "#f5b700", letterSpacing: "0.2em" }}>NUESTRA RAZÓN DE SER</span>
+            <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "2rem", color: "#ffffff", marginTop: "0.5rem", marginBottom: "1rem" }}>Misión</h3>
+            <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.98rem", color: "#eef1f5", lineHeight: 1.8, margin: 0 }}>
               Somos un grupo de empresas especializadas en la edificación de viviendas sociales, contando con profesionales de amplia experiencia, capacidad logística y financiera que nos permite atender con tranquilidad a nuestro público objetivo.
             </p>
           </div>
           <div className="p-10" style={{ background: "#1a1a1a", borderRadius: "8px" }}>
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 700, color: "#f5b700", letterSpacing: "0.2em" }}>A DÓNDE VAMOS</span>
-            <h3 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "2rem", color: "#ffffff", marginTop: "0.5rem", marginBottom: "1rem" }}>Visión</h3>
-            <p style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "0.98rem", color: "#eef1f5", lineHeight: 1.8, margin: 0 }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 700, color: "#f5b700", letterSpacing: "0.2em" }}>A DÓNDE VAMOS</span>
+            <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "2rem", color: "#ffffff", marginTop: "0.5rem", marginBottom: "1rem" }}>Visión</h3>
+            <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.98rem", color: "#eef1f5", lineHeight: 1.8, margin: 0 }}>
               Ser un grupo constructor líder en la construcción de viviendas sociales en el país, con capacidad de articular esfuerzos con el Estado, a fin de conseguir la mejora continua del programa de vivienda Techo Propio.
             </p>
           </div>
@@ -947,19 +947,19 @@ function About() {
 
         <div className="mb-20">
           <div className="text-center mb-12">
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>LO QUE NOS GUÍA</span>
-            <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>LO QUE NOS GUÍA</span>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2rem, 4vw, 3rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               VALORES DE LA EMPRESA
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {valores.map((v, i) => (
               <div key={v.title} className="p-8 transition-all duration-300 hover:shadow-lg" style={{ background: "#f8f8f8", borderRadius: "8px", border: "1px solid #eceae4" }}>
-                <div className="w-12 h-12 flex items-center justify-center font-bold mb-5" style={{ background: i === 1 ? "#f5b700" : "#173B66", color: "#ffffff", fontFamily: "Barlow Condensed, sans-serif", fontSize: "1.4rem", borderRadius: "6px" }}>
+                <div className="w-12 h-12 flex items-center justify-center font-bold mb-5" style={{ background: i === 1 ? "#f5b700" : "#173B66", color: "#ffffff", fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "1.4rem", borderRadius: "6px" }}>
                   {i + 1}
                 </div>
-                <h4 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, fontSize: "1.4rem", color: "#1a1a1a", marginBottom: "0.5rem" }}>{v.title}</h4>
-                <p style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.88rem", color: "#787774", lineHeight: 1.7, margin: 0 }}>{v.desc}</p>
+                <h4 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.4rem", color: "#4a4a49", marginBottom: "0.5rem" }}>{v.title}</h4>
+                <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.88rem", color: "#4a4a49", lineHeight: 1.7, margin: 0 }}>{v.desc}</p>
               </div>
             ))}
           </div>
@@ -967,11 +967,11 @@ function About() {
 
         <div>
           <div className="text-center mb-12">
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>FOTOGRAFÍA REAL</span>
-            <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>FOTOGRAFÍA REAL</span>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2rem, 4vw, 3rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               EVIDENCIA, NO<br />IMÁGENES DE STOCK.
             </h2>
-            <p className="mx-auto mt-5 text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, lineHeight: 1.8, fontSize: "0.95rem", maxWidth: "62ch" }}>
+            <p className="mx-auto mt-5 text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem", maxWidth: "62ch" }}>
               Estas son fotos reales de nuestro equipo, nuestras obras y las familias a las que ayudamos. Preferimos mostrar el trabajo tal como es antes que recurrir a fotos de banco.
             </p>
           </div>
@@ -980,8 +980,8 @@ function About() {
               <div key={i} className="overflow-hidden rounded-lg shadow-lg bg-white" style={{ border: "1px solid #e5e5e5" }}>
                 <img src={e.img} alt={e.titulo} className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700" />
                 <div className="p-4">
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontWeight: 700, fontSize: "0.78rem", color: "#f5b700", letterSpacing: "0.05em", marginBottom: "0.25rem" }}>{e.titulo.toUpperCase()}</div>
-                  <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#787774", lineHeight: 1.5 }}>{e.desc}</span>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.78rem", color: "#f5b700", letterSpacing: "0.05em", marginBottom: "0.25rem" }}>{e.titulo.toUpperCase()}</div>
+                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#4a4a49", lineHeight: 1.5 }}>{e.desc}</span>
                 </div>
               </div>
             ))}
@@ -997,8 +997,8 @@ function Testimonials() {
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>LO QUE DICEN</span>
-          <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+          <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>LO QUE DICEN</span>
+          <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.5rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
             NUESTROS CLIENTES
           </h2>
         </div>
@@ -1015,7 +1015,7 @@ function Testimonials() {
                 "{t.text}"
               </p>
               <div className="mt-5 pt-5 border-t border-gray-200">
-                <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#1a1a1a" }}>{t.name}</div>
+                <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49" }}>{t.name}</div>
                 <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.78rem", color: "#f5b700" }}>{t.location}</div>
               </div>
             </div>
@@ -1079,7 +1079,7 @@ function ReelsCarousel() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
             <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 400, color: "#f5b700", letterSpacing: "0.2em" }}>SÍGUENOS EN FACEBOOK</span>
-            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.4rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.4rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               NUESTRO TRABAJO<br />
               <span style={{ color: "#f5b700" }}>EN IMÁGENES.</span>
             </h2>
@@ -1089,7 +1089,7 @@ function ReelsCarousel() {
               onClick={() => emblaApi?.scrollPrev()}
               aria-label="Anterior"
               className="w-11 h-11 flex items-center justify-center border border-gray-300 hover:border-primary hover:bg-primary transition-all duration-300"
-              style={{ borderRadius: "8px", background: "#ffffff", color: "#1a1a1a" }}
+              style={{ borderRadius: "8px", background: "#ffffff", color: "#4a4a49" }}
             >
               <ChevronLeft size={20} />
             </button>
@@ -1097,7 +1097,7 @@ function ReelsCarousel() {
               onClick={() => emblaApi?.scrollNext()}
               aria-label="Siguiente"
               className="w-11 h-11 flex items-center justify-center border border-gray-300 hover:border-primary hover:bg-primary transition-all duration-300"
-              style={{ borderRadius: "8px", background: "#ffffff", color: "#1a1a1a" }}
+              style={{ borderRadius: "8px", background: "#ffffff", color: "#4a4a49" }}
             >
               <ChevronRight size={20} />
             </button>
@@ -1152,8 +1152,8 @@ function Contact() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
-            <span style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>HABLEMOS</span>
-            <h2 style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>HABLEMOS</span>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               TU CASA PROPIA<br />EMPIEZA CON<br />
               <span style={{ color: "#f5b700" }}>UNA LLAMADA.</span>
             </h2>
@@ -1167,10 +1167,10 @@ function Contact() {
                   <Phone size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Llámanos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>993 611 523</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>937 202 783</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>960 989 470</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49", fontSize: "0.95rem" }}>Llámanos</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#8a8f9e" }}>993 611 523</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#8a8f9e" }}>937 202 783</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#8a8f9e" }}>960 989 470</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -1178,8 +1178,8 @@ function Contact() {
                   <Mail size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Escríbenos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>contacto@consorcioconstructor.com</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49", fontSize: "0.95rem" }}>Escríbenos</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#8a8f9e" }}>contacto@consorcioconstructor.com</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -1187,10 +1187,10 @@ function Contact() {
                   <MapPin size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: "Barlow Condensed, sans-serif", fontWeight: 700, color: "#1a1a1a", fontSize: "0.95rem" }}>Visítanos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Lima: Av. Próceres de Huandoy Mz. C Lt. 13, 3er Piso, Los Olivos</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Ica: Calle 20 Mz M, Lotes 19, 20 y 21, Urb. Valle Esmeralda, Pueblo Nuevo</div>
-                  <div style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem", color: "#8a8f9e" }}>Lambayeque: Av. Augusto B. Leguía N° 190, Olmos</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49", fontSize: "0.95rem" }}>Visítanos</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#8a8f9e" }}>Lima: Av. Próceres de Huandoy Mz. C Lt. 13, 3er Piso, Los Olivos</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#8a8f9e" }}>Ica: Calle 20 Mz M, Lotes 19, 20 y 21, Urb. Valle Esmeralda, Pueblo Nuevo</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#8a8f9e" }}>Lambayeque: Av. Augusto B. Leguía N° 190, Olmos</div>
                 </div>
               </div>
             </div>
@@ -1227,7 +1227,7 @@ style={{ background: "#1877f2", color: "#fff", fontFamily: '"Myriad Pro", "Segoe
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.4rem", color: "#1a1a1a", marginBottom: "0.5rem" }}>
+                <h3 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.4rem", color: "#4a4a49", marginBottom: "0.5rem" }}>
                   FORMULARIO DE COTIZACIÓN
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -1291,13 +1291,13 @@ function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Consorcio Constructor" className="h-10 w-auto" />
             </div>
-            <p style={{ fontFamily: "Barlow, sans-serif", fontWeight: 300, fontSize: "0.85rem", color: "#666666", lineHeight: 1.7 }}>
+            <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.85rem", color: "#4a4a49", lineHeight: 1.7 }}>
               Construyendo el Perú de hoy para las familias del mañana. Calidad, compromiso y confianza en cada proyecto.
             </p>
           </div>
 
           <div>
-            <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#1a1a1a", letterSpacing: "0.1em", marginBottom: "1rem", fontSize: "0.85rem" }}>NAVEGACIÓN</div>
+            <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49", letterSpacing: "0.1em", marginBottom: "1rem", fontSize: "0.85rem" }}>NAVEGACIÓN</div>
             <div className="flex flex-col gap-2">
               {NAV_LINKS.map((l) => (
                 <a key={l.label} href={l.href} className="text-gray-600 hover:text-primary transition-colors" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem" }}>
@@ -1308,11 +1308,11 @@ function Footer() {
           </div>
 
           <div>
-            <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#1a1a1a", letterSpacing: "0.1em", marginBottom: "1rem", fontSize: "0.85rem" }}>CONTACTO</div>
+            <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49", letterSpacing: "0.1em", marginBottom: "1rem", fontSize: "0.85rem" }}>CONTACTO</div>
             <div className="flex flex-col gap-2">
-              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>consorcioconstructormkt@gmail.com</span>
-              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>+51 987 654 321</span>
-              <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.85rem" }}>Lima, Perú</span>
+              <span className="text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem" }}>consorcioconstructormkt@gmail.com</span>
+              <span className="text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem" }}>+51 987 654 321</span>
+              <span className="text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem" }}>Lima, Perú</span>
               <div className="flex gap-3 mt-3">
                 <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-primary transition-colors">
                   <Facebook size={18} />
@@ -1326,12 +1326,12 @@ function Footer() {
         </div>
 
         <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.78rem" }}>
+          <span className="text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.78rem" }}>
             © 2025 Consorcio Constructor. Todos los derechos reservados.
           </span>
           <div className="flex items-center gap-2">
             <Users size={14} className="text-primary" />
-            <span className="text-gray-600" style={{ fontFamily: "Barlow, sans-serif", fontSize: "0.78rem" }}>Más de 150 familias confían en nosotros</span>
+            <span className="text-gray-600" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.78rem" }}>Más de 150 familias confían en nosotros</span>
           </div>
         </div>
       </div>

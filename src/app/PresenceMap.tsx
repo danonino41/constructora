@@ -79,15 +79,15 @@ function PresenceMap() {
               <div className="flex items-center justify-between px-6 py-5" style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", background: "rgba(245,183,0,0.06)" }}>
                 <div className="flex items-center gap-2.5">
                   <MapPin size={18} style={{ color: "#f5b700" }} />
-                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.15rem", letterSpacing: "0.12em", color: "#1a1a1a" }}>
+                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.15rem", letterSpacing: "0.12em", color: "#4a4a49" }}>
                     ZONAS ATENDIDAS
                   </span>
                 </div>
                 <div className="text-right">
-                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.6rem", lineHeight: 1, color: "#1a1a1a" }}>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.6rem", lineHeight: 1, color: "#4a4a49" }}>
                     {TOTAL_VIVIENDAS.toLocaleString("es-PE")}
                   </div>
-                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.7rem", letterSpacing: "0.1em", color: "#5f666e", fontWeight: 400 }}>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.7rem", letterSpacing: "0.1em", color: "#4a4a49", fontWeight: 400 }}>
                     VIVIENDAS EDIFICADAS
                   </div>
                 </div>
@@ -169,22 +169,22 @@ function PresenceMap() {
                     >
                       <div className="flex items-center gap-2 mb-1">
                         <span style={{ width: 10, height: 10, borderRadius: 3, background: r.color, display: "inline-block", flexShrink: 0 }} />
-                        <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", color: "#1a1a1a" }}>{r.name}</span>
+                        <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.04em", color: "#4a4a49" }}>{r.name}</span>
                       </div>
-                      <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.78rem", color: "#2e2e2d", fontWeight: 700 }}>{r.value}</div>
-                      <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.68rem", color: "#5f666e", fontWeight: 400 }}>{r.desc}</div>
+                      <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.78rem", color: "#4a4a49", fontWeight: 700 }}>{r.value}</div>
+                      <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.68rem", color: "#4a4a49", fontWeight: 400 }}>{r.desc}</div>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-1.5 pt-3" style={{ borderTop: "1px dashed rgba(0,0,0,0.1)" }}>
-                  <span className="inline-flex items-center gap-1.5" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#2e2e2d", fontWeight: 400 }}>
+                  <span className="inline-flex items-center gap-1.5" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#4a4a49", fontWeight: 400 }}>
                     <span style={{ width: 8, height: 8, background: "#eceae4", border: "1px solid #d0ccc4", display: "inline-block" }} /> Zona atendida
                   </span>
-                  <span className="inline-flex items-center gap-1.5" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#2e2e2d", fontWeight: 400 }}>
+                  <span className="inline-flex items-center gap-1.5" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#4a4a49", fontWeight: 400 }}>
                     <span style={{ width: 8, height: 8, background: "#d7d5d0", display: "inline-block" }} /> Punto de atención
                   </span>
-                  <span className="inline-flex items-center gap-1.5" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#2e2e2d", fontWeight: 400 }}>
+                  <span className="inline-flex items-center gap-1.5" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#4a4a49", fontWeight: 400 }}>
                     <span style={{ width: 8, height: 8, background: "#f5b700", display: "inline-block" }} /> Top regiones
                   </span>
                 </div>
@@ -197,15 +197,15 @@ function PresenceMap() {
             <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 700, color: "#f5b700", letterSpacing: "0.2em" }}>
               LO QUE HEMOS LOGRADO
             </span>
-            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#1a1a1a", lineHeight: 0.95, marginTop: "0.5rem" }}>
+            <h2 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "#4a4a49", lineHeight: 0.95, marginTop: "0.5rem" }}>
               MÁS DE 3,367 VIVIENDAS
               <br />
               <span style={{ color: "#f5b700", lineHeight: 1.0 }}>CONSTRUIDAS EN TODO EL PERÚ.</span>
             </h2>
-            <p className="mt-6" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem", color: "#2e2e2d" }}>
+            <p className="mt-6" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem", color: "#4a4a49" }}>
               Desde nuestros inicios hemos recorrido el territorio nacional entregando viviendas del programa Techo Propio. Nuestro mapa de zonas atendidas refleja el trabajo realizado a lo largo de los años: más de <strong style={{ color: "#f5b700", fontWeight: 700 }}>3,367 viviendas edificadas</strong>, con la mayor concentración de bonos familiares habitacionales en Arequipa (1,119), La Libertad (746) e Ica (737).
             </p>
-            <p className="mt-4" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem", color: "#2e2e2d" }}>
+            <p className="mt-4" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, lineHeight: 1.8, fontSize: "0.95rem", color: "#4a4a49" }}>
               Contamos con oficinas de atención en Lima, Ica y Lambayeque, desde donde coordinamos la habilitación, la construcción y la entrega llave en mano de cada proyecto, además del acompañamiento en la gestión de los bonos del Estado.
             </p>
 
@@ -213,7 +213,7 @@ function PresenceMap() {
               {ACHIEVEMENTS.map((a) => (
                 <div key={a} className="flex items-center gap-3">
                   <CheckCircle size={16} style={{ color: "#f5b700", flexShrink: 0 }} />
-                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", color: "#2e2e2d", fontWeight: 400 }}>{a}</span>
+                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", color: "#4a4a49", fontWeight: 400 }}>{a}</span>
                 </div>
               ))}
             </div>
@@ -236,8 +236,8 @@ function PresenceMap() {
                   <Home size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.3rem", lineHeight: 1, color: "#1a1a1a" }}>3,367+</div>
-                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#5f666e", fontWeight: 400 }}>Viviendas entregadas</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.3rem", lineHeight: 1, color: "#4a4a49" }}>3,367+</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#4a4a49", fontWeight: 400 }}>Viviendas entregadas</div>
                 </div>
               </div>
               <div className="p-4 rounded-lg flex items-center gap-3" style={{ background: "#f8f8f8", border: "1px solid rgba(0,0,0,0.07)" }}>
@@ -245,8 +245,8 @@ function PresenceMap() {
                   <Building2 size={18} style={{ color: "#f5b700" }} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.3rem", lineHeight: 1, color: "#1a1a1a" }}>3</div>
-                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#5f666e", fontWeight: 400 }}>Oficinas de atención</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.3rem", lineHeight: 1, color: "#4a4a49" }}>3</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#4a4a49", fontWeight: 400 }}>Oficinas de atención</div>
                 </div>
               </div>
             </div>

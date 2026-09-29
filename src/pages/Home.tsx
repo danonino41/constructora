@@ -1,7 +1,6 @@
 import { lazy } from "react";
 import { Link } from "react-router";
 import Hero from "@/sections/Hero";
-import Programs from "@/sections/Programs";
 import { LazySection } from "@/app/LazySection";
 
 const Testimonials = lazy(() => import("@/sections/Testimonials"));
@@ -10,8 +9,8 @@ const PresenceMap = lazy(() => import("@/app/PresenceMap"));
 export default function Home() {
   return (
     <>
+      {/* INICIO: Hero (mensaje clave + CTAs) + Slider de programas + 3 tarjetas de acceso directo */}
       <Hero />
-      <Programs />
       <LazySection Comp={PresenceMap} minHeight={900} />
       <LazySection Comp={Testimonials} minHeight={520} />
 

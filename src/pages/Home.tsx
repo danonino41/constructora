@@ -27,7 +27,7 @@ export default function Home() {
             className="mt-8 inline-flex items-center gap-3 bg-primary text-primary-foreground px-9 py-4 font-bold transition-all hover:opacity-90 hover:scale-105"
             style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "1rem", letterSpacing: "0.1em", borderRadius: "8px" }}
           >
-            COTIZAR AHORA
+            SOLICITA INFORMACIÓN
           </Link>
         </div>
       </section>

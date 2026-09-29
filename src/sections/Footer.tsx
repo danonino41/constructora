@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-import { Facebook, MapPin, MessageCircle, Phone, Users } from "lucide-react";
+import { Facebook, MapPin, Phone, Users } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { NAV_LINKS, CONTACT } from "@/data/content";
 import logo from "@/imports/logo.png";
 
@@ -29,7 +30,7 @@ export default function Footer() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.65a8.26 8.26 0 0 0 4.83 1.56V6.77a4.85 4.85 0 0 1-1.06-.08z"/></svg>
               </a>
               <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="grid place-items-center w-9 h-9 transition-all hover:opacity-80" style={{ borderRadius: "50%", background: "#f8f8f8", color: "#4a4a49", border: "1px solid #eceae4" }}>
-                <MessageCircle size={16} />
+                <WhatsAppIcon size={16} />
               </a>
             </div>
           </div>
@@ -71,10 +72,10 @@ export default function Footer() {
                 </a>
               ))}
               <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#6b7480" }}>
-                <MessageCircle size={15} style={{ color: "#f5b700", flexShrink: 0 }} /> {CONTACT.phones.join(" · ")}
+                <WhatsAppIcon size={15} style={{ color: "#f5b700", flexShrink: 0 }} /> {CONTACT.phones.join(" · ")}
               </a>
-              <a href="mailto:contacto@consorcioconstructor.com" className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.82rem", color: "#6b7480" }}>
-                contacto@consorcioconstructor.com
+              <a href={`mailto:${CONTACT.email}`} className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.82rem", color: "#6b7480" }}>
+                {CONTACT.email}
               </a>
             </div>
           </div>
@@ -93,7 +94,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.06em", borderRadius: "3px" }}>
-              <MessageCircle size={16} /> ESCRIBENOS POR WHATSAPP
+              <WhatsAppIcon size={16} /> ESCRIBENOS POR WHATSAPP
             </a>
             <Link to="/contacto" className="inline-flex items-center gap-2 px-6 py-3 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.06em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
               <Phone size={16} /> CONTACTO

@@ -81,7 +81,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <div className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-8">
           {NAV_LINKS.map((l) =>
             l.label === "Programas" ? (
               <div key={l.label} className="relative group">
@@ -125,10 +125,10 @@ export default function Navbar() {
           )}
           <Link
             to="/contacto"
-            className="bg-primary text-primary-foreground px-5 py-2.5 text-sm font-bold transition-all hover:opacity-90 hover:scale-105"
+            className="bg-primary text-primary-foreground px-5 py-2.5 text-sm font-bold whitespace-nowrap shrink-0 transition-all hover:opacity-90 hover:scale-105"
             style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', letterSpacing: "0.08em", borderRadius: "3px" }}
           >
-            COTIZAR AHORA
+            <span className="hidden xl:inline">SOLICITA </span>INFORMACIÓN
           </Link>
         </div>
 
@@ -167,7 +167,7 @@ export default function Navbar() {
             </div>
           ))}
           <Link to="/contacto" className="bg-primary text-primary-foreground px-5 py-3 text-sm font-bold text-center transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', letterSpacing: "0.08em", borderRadius: "3px" }} onClick={() => setOpen(false)}>
-            COTIZAR AHORA
+            SOLICITA INFORMACIÓN
           </Link>
         </div>
       )}

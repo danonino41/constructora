@@ -58,7 +58,7 @@ export const STATS: Stat[] = [
 
 export const CONTACT = {
   phones: ["993 611 523", "937 202 783", "960 989 470"],
-  email: "contacto@consorcioconstructor.com",
+  email: "consorcioconstructormkt@gmail.com",
   facebook: "https://www.facebook.com/consorcioconstructorperu/",
   tiktok: "https://www.tiktok.com/@consorcioconstructor",
   sedes: [

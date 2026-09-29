@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
-import { MapPin, CheckCircle, Building2, Users, Home } from "lucide-react";
+import { Link } from "react-router";
+import { ArrowRight, MapPin, CheckCircle, Building2, Home } from "lucide-react";
 import { PERU_MAP } from "@/lib/peru-map";
-import clientesImg from "@/imports/Fotos_de_clientes.jpg";
+import { CONTACT } from "@/data/content";
 
 type ZoneValue = { value?: number; type?: "bono" | "oficina" };
 
@@ -36,15 +37,13 @@ function PresenceMap() {
   const [selected, setSelected] = useState<string>("arequipa");
 
   const tooltip = useMemo(() => {
-    if (!hovered) return null;
+    const zone = hovered ? ZONES[hovered] : undefined;
+    if (!hovered || !zone) return null;
     const spot = PERU_MAP.hotspots[hovered];
     if (!spot) return null;
-    const zone = ZONES[hovered];
-    const info = zone?.type === "bono"
-      ? { title: zone.value?.toLocaleString("es-PE"), label: "Bonos entregados" }
-      : zone?.type === "oficina"
-        ? { title: "Punto de atención", label: "Oficina consorcio" }
-        : { title: "Zona atendida", label: "Proyectos alcanzados" };
+    const info = zone.type === "bono"
+      ? { label: "Bonos entregados", value: (zone.value ?? 0).toLocaleString("es-PE") }
+      : { label: "Oficina de atención", value: undefined };
     const left = Math.min(88, Math.max(12, (spot.x / PERU_MAP.width) * 100));
     const top = Math.min(92, Math.max(10, (spot.y / PERU_MAP.height) * 100));
     return {
@@ -54,6 +53,24 @@ function PresenceMap() {
       ...info,
     };
   }, [hovered]);
+
+  const detail = useMemo(() => {
+    const name = PERU_MAP.paths.find((p) => p.key === selected)?.name ?? "";
+    const zone = ZONES[selected];
+    if (zone?.type === "bono") {
+      return {
+        name,
+        kind: "bono" as const,
+        value: (zone.value ?? 0).toLocaleString("es-PE"),
+        rank: REGION_LEGEND.find((r) => r.name === name)?.desc,
+      };
+    }
+    if (zone?.type === "oficina") {
+      const sede = CONTACT.sedes.find((s) => s.city.toLowerCase() === selected);
+      return { name, kind: "oficina" as const, sede };
+    }
+    return { name, kind: "sin" as const };
+  }, [selected]);
 
   const fillFor = (key: string) => {
     const zone = ZONES[key];
@@ -67,9 +84,9 @@ function PresenceMap() {
     key === hovered || key === selected ? "#ffffff" : "#ffffff";
 
   return (
-    <section id="zonas-atendidas" className="py-24 overflow-hidden bg-white">
+    <section id="zonas-atendidas" className="py-16 md:py-24 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-14 items-start">
+        <div className="grid gap-10 xl:gap-12 xl:grid-cols-[1fr_1fr] xl:items-center">
           {/* LEFT: MAPA INTERACTIVO */}
           <div>
             <div
@@ -94,7 +111,7 @@ function PresenceMap() {
               </div>
 
               <div className="px-4 py-5 sm:px-6">
-                <div className="relative w-full max-w-[420px] mx-auto">
+                <div className="relative w-full max-w-[300px] sm:max-w-[340px] xl:max-w-[380px] mx-auto">
                   <svg
                     viewBox={`0 0 ${PERU_MAP.width} ${PERU_MAP.height}`}
                     className="w-full h-auto select-none"
@@ -150,7 +167,8 @@ function PresenceMap() {
                           {tooltip.name}
                         </div>
                         <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", fontWeight: 400, color: "#0d0f14", opacity: 0.85 }}>
-                          {tooltip.label}: <span style={{ fontWeight: 700 }}>{tooltip.title}</span>
+                          {tooltip.label}
+                          {tooltip.value ? <>: <span style={{ fontWeight: 700 }}>{tooltip.value}</span></> : null}
                         </div>
                       </div>
                       <div style={{ width: 0, height: 0, margin: "0 auto", borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderTop: "7px solid #f5b700" }} />
@@ -189,6 +207,104 @@ function PresenceMap() {
                   </span>
                 </div>
               </div>
+
+              <div className="px-6 pb-6">
+                <div
+                  className="p-4 sm:p-5"
+                  style={{ background: "#f8f8f8", border: "1px solid rgba(0,0,0,0.07)", borderLeft: "4px solid #f5b700", borderRadius: "8px" }}
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.16em", color: "#6b7480" }}>
+                        REGIÓN SELECCIONADA
+                      </div>
+                      <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.35rem", color: "#4a4a49", marginTop: "0.2rem" }}>
+                        {detail.name}
+                      </div>
+                    </div>
+
+                    {detail.kind === "bono" && (
+                      <div className="text-right">
+                        <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1.9rem", lineHeight: 1, color: "#f5b700" }}>
+                          {detail.value}
+                        </div>
+                        <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.68rem", letterSpacing: "0.1em", color: "#4a4a49", marginTop: "0.3rem" }}>
+                          BONOS GESTIONADOS
+                        </div>
+                        {detail.rank && (
+                          <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.72rem", color: "#6b7480", marginTop: "0.2rem" }}>
+                            {detail.rank}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {detail.kind === "oficina" && (
+                      <span
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5"
+                        style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.7rem", fontWeight: 700, color: "#173B66", background: "rgba(245,183,0,0.16)", borderRadius: "3px", letterSpacing: "0.06em" }}
+                      >
+                        <Building2 size={13} style={{ color: "#f5b700" }} /> PUNTO DE ATENCIÓN
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="mt-3" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", lineHeight: 1.7, color: "#4a4a49" }}>
+                    {detail.kind === "bono" && (
+                      <>
+                        Gestionamos de principio a fin los bonos familiares habitacionales en esta región: registro, expediente, obra y entrega de llaves. Es una de las zonas donde más familias han accedido a su vivienda con el programa Techo Propio.
+                      </>
+                    )}
+                    {detail.kind === "oficina" && (
+                      <>
+                        Contamos con oficina de atención en {detail.sede?.city}. Desde ahí coordinamos la habilitación, la construcción y la entrega llave en mano, además del acompañamiento en la gestión de los bonos del Estado.
+                      </>
+                    )}
+                    {detail.kind === "sin" && (
+                      <>
+                        Aún no registramos bonos en esta región. Si vives aquí, escríbenos igual: te orientamos sobre las modalidades del programa, los requisitos vigentes y las opciones de financiamiento disponibles para tu caso.
+                      </>
+                    )}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap items-center gap-4">
+                    {detail.kind === "bono" && (
+                      <Link
+                        to="/programas/techo-propio"
+                        className="inline-flex items-center gap-2 font-bold transition-all hover:gap-3"
+                        style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", letterSpacing: "0.04em" }}
+                      >
+                        Conoce el programa Techo Propio <ArrowRight size={15} style={{ color: "#f5b700" }} />
+                      </Link>
+                    )}
+                    {detail.kind === "oficina" && (
+                      <a
+                        href={detail.sede?.map}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-bold hover:opacity-80"
+                        style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", letterSpacing: "0.04em" }}
+                      >
+                        Ver ubicación en el mapa <ArrowRight size={15} style={{ color: "#f5b700" }} />
+                      </a>
+                    )}
+                    {detail.kind === "sin" && (
+                      <a
+                        href="https://wa.me/51993611523"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-bold hover:opacity-80"
+                        style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", letterSpacing: "0.04em" }}
+                      >
+                        Escríbenos por WhatsApp <ArrowRight size={15} style={{ color: "#f5b700" }} />
+                      </a>
+                    )}
+                    <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", color: "#8a9199" }}>
+                      Toca o haz clic en otra región del mapa para ver su detalle.
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -216,18 +332,6 @@ function PresenceMap() {
                   <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", color: "#4a4a49", fontWeight: 400 }}>{a}</span>
                 </div>
               ))}
-            </div>
-
-            <div className="relative mt-8 rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.1)", boxShadow: "0 12px 28px rgba(0,0,0,0.08)" }}>
-              <img src={clientesImg} alt="Familias beneficiarias del programa Techo Propio" className="w-full object-cover" />
-              <div className="absolute inset-x-0 bottom-0 p-4" style={{ background: "linear-gradient(to top, rgba(13,15,20,0.95), rgba(13,15,20,0.35), transparent)" }}>
-                <div className="flex items-center gap-2">
-                  <Users size={16} style={{ color: "#f5b700" }} />
-                  <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.8rem", fontWeight: 400, color: "#ffffff" }}>
-                    Familias beneficiarias recibiendo sus llaves en la entrega oficial.
-                  </span>
-                </div>
-              </div>
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3">

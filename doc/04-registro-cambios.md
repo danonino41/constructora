@@ -4,20 +4,20 @@ Bitácora de modificaciones a la web según indicaciones. Se agregan entradas de
 
 | Fecha | Cambio | Comentario |
 |---|---|---|
+| 26 Sep 2026 | **Web multi-página (React Router)**: `src/app/Router.tsx` + `src/app/Layout.tsx` | Rutas `/` (Home resumen), `/proyectos`, `/requisitos`, `/servicios`, `/nosotros`, `/galeria`, `/contacto`, `/faqs`; Layout con Navbar+Footer; `*`→Home |
+| 26 Sep 2026 | **Página Nosotros desde `nosotros.html`** | `src/pages/Nosotros.tsx`: hero, por qué consorcio, diferenciador, confianza (stats reales), misión/visión/valores, testimonios con TESTIMONIALS, CTA; fuente HTML conservada en `src/sections/nosotros.html` |
+| 26 Sep 2026 | Navbar/Footer con `Link` de router; transparente solo en Home | Menú: Inicio · Programas ▾ (scroll a tarjetas en Home) · Requisitos · Proyectos · Servicios · Nosotros · FAQs · Galería + COTIZAR AHORA; CTAs de Hero/Programs/Quiz/VideoTour → rutas (`/proyectos`, `/contacto`, `/requisitos`) |
+| 26 Sep 2026 | **Sprints 1–4** (contenido programas + FAQs + menú 3 áreas + rendimiento) | Ver filas anteriores; checklist CEO en `doc/01`, borradores en `doc/07` |
+| 26 Sep 2026 | **Sprint 1**: bloque "¿Qué es Techo Propio?" en sección Programas | Requisitos/beneficios en bullets, CTAs "Solicita información"/"Descarga requisitos", enlaces oficiales (gob.pe/mvcs, mivivienda.com.pe) |
+| 26 Sep 2026 | **Sprint 2**: sección FAQs (`#faqs`) con acordeón | 10 preguntas en 3 grupos (Techo Propio, BPVVRS, MiVivienda) según borrador doc/07 |
+| 26 Sep 2026 | **Sprint 3**: menú desplegable "Programas" | Sub-ítems: Techo Propio (#techo-propio), Bono de Reforzamiento (#reforzamiento), Crédito MiVivienda (#credito-mivivienda); sub-lista en móvil |
+| 26 Sep 2026 | Ruta `inicio → programas → requisitos → proyectos → ...` + Navbar limpio | Quitado ítem "Contacto" (ya existe CTA COTIZAR AHORA); agregado "Programas" al menú |
+| 26 Sep 2026 | Hero: slideshow con proyectos reales recientes + estilo limpio FMV | 5 fotos reales de entregas (src/imports) en autoplay 6 s; texto a la izquierda (eyebrow + título + 1 línea + 1 CTA); badge del proyecto actual; dots navegables; logo +80% |
+| 26 Sep 2026 | Video Recorrido 3D: `preload=none` + poster (foto real) | Ya no se descarga al cargar/tocar la sección (≈9.6 MB); baja solo al reproducir |
+| 26 Sep 2026 | Lazy-load slides del hero | Primer slide `eager`+`fetchPriority=high`; resto `lazy`/`async` |
 | 25 Sep 2026 | Se crea carpeta `doc/` | Documentación de funciones y observaciones del CEO |
-| 25 Sep 2026 | Header: fondo oscuro translúcido en degradé al top | Links legibles sobre el slideshow; al scrollear vuelve blanco sólido |
-| 25 Sep 2026 | Logo del header +20 % | `h-12` → `h-[3.6rem]` |
-| 25 Sep 2026 | Hero convertido a slideshow a pantalla completa | embla con banner + 7 fotos, autoplay 6 s, pausa al hover, sin gradiente oscuro; badge centrado con fondo opaco sutil |
-| 25 Sep 2026 | Hero: video reemplazado por `banner.jpeg`; se eliminan título y párrafo | Quedan badge, dot y stats |
-| 25 Sep 2026 | Tipografía global Myriad Pro + color base #4a4a49 | Reemplaza Barlow/Barlow Condensed; pesos 800→700, 300→400; tokens en `src/styles/theme.css`, `fonts.css`, `PresenceMap.tsx` |
-| 25 Sep 2026 | Sección Galería (`#galeria`) con carrusel de publicaciones de Facebook | embla-carousel-react, 7 fotos IMG1–IMG7 con texto y enlace a publicación; menú "Galería" |
-| 25 Sep 2026 | Rutas de imágenes corregidas | Renombrado a `IMG1.jpeg`–`IMG7.jpeg` en `public/PublicacionesFB/` |
-| — | Reels de Facebook descartados | No permiten embebido (error 400); se usan capturas de las publicaciones |
 
 ## Pendiente de implementar (CEO)
 Ver checklist en [01-observaciones-ceo-ux-ui.md](./01-observaciones-ceo-ux-ui.md):
-- Apartado "¿Qué es Techo Propio?" (requisitos + beneficios, lenguaje sencillo).
-- FAQs sobre los tres programas.
-- CTAs explícitos: "Solicita información", "Descarga requisitos".
-- Enlaces a recursos oficiales (Fondo MiVivienda, reglamentos MVCS).
-- Optimización de imágenes (peso actual de `VIDEO_RECORRIDO_3D.mp4` ≈ 9.4 MB).
+- Comprimir imágenes de `public/modelos/` (≈1.4–2.3 MB c/u, ×30) para el modal de planos.
+- Validación del CEO del contenido de doc/07 (FAQ y "¿Qué es Techo Propio" aún a confirmar, en particular ahorro mínimo y FSV).

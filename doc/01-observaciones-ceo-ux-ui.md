@@ -11,9 +11,9 @@ La presencia digital de Consorcio Constructor (sitio web y redes sociales) debe 
 ## Requerimientos de UX/UI
 
 ### Navegación clara y sencilla
-- [ ] Menú destacado con las tres áreas principales: **Techo Propio**, **Bono Reforzamiento**, **Crédito MiVivienda**.
-- [ ] Apartado *"¿Qué es Techo Propio?"* con lenguaje sencillo (inspirado en fuentes oficiales): requisitos y beneficios.
-- [ ] Cada sección guía al usuario paso a paso, con enlaces a formularios o información oficial (similar al portal de Fondo MiVivienda).
+- [x] Menú destacado con las tres áreas principales: **Techo Propio**, **Bono Reforzamiento**, **Crédito MiVivienda**.
+- [x] Apartado *"¿Qué es Techo Propio?"* con lenguaje sencillo (inspirado en fuentes oficiales): requisitos y beneficios.
+- [x] Cada sección guía al usuario paso a paso, con enlaces a formularios o información oficial (similar al portal de Fondo MiVivienda).
 - [ ] No usar logotipos oficiales; solo referencia/nombre de los programas.
 
 ### Diseño accesible y coherente
@@ -25,11 +25,11 @@ La presencia digital de Consorcio Constructor (sitio web y redes sociales) debe 
 ### Contenido enfocado en el usuario
 - [ ] Bloques de texto cortos (3–5 líneas) y listas.
 - [ ] Bullet points para pasos del proceso, requisitos y beneficios.
-- [ ] Preguntas frecuentes (FAQs) sobre los programas.
-- [ ] Enlaces a recursos oficiales (Fondo MiVivienda o reglamentos) para transparencia.
+- [x] Preguntas frecuentes (FAQs) sobre los programas.
+- [x] Enlaces a recursos oficiales (Fondo MiVivienda o reglamentos) para transparencia.
 
 ### Llamados a la acción claros (CTAs)
-- [ ] Botones visibles: *"Solicita información"*, *"Regístrate aquí"*, *"Descarga requisitos"*.
+- [x] Botones visibles: *"Solicita información"*, *"Regístrate aquí"*, *"Descarga requisitos"*.
 - [ ] Flujo lógico guiado: de *"Conoce el Programa Techo Propio"* a *"Cotiza tu Crédito MiVivienda"*.
 
 ### Velocidad y desempeño

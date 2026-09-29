@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router";
 import { BadgeCheck, Home, PhoneCall, CheckCircle, Clock, ArrowRight, RefreshCw, ChevronRight, ArrowLeft, TrendingUp } from "lucide-react";
 import { QUIZ_STEPS, QUIZ_PROGRAMS, type QuizOption } from "@/data/content";
 
@@ -185,13 +186,13 @@ export default function QualificationQuiz() {
                       <p style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", color: "#8a8f9e", maxWidth: 340 }}>
                         Un asesor se pondrá en contacto contigo en menos de 24 horas para confirmar tu calificación y agendar tu asesoría gratis.
                       </p>
-                      <a
-                        href="#contacto"
+                      <Link
+                        to="/contacto"
                         className="inline-flex items-center gap-2 mt-2 bg-primary text-primary-foreground px-6 py-3 font-bold transition-all hover:opacity-90"
                         style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.95rem", letterSpacing: "0.1em", borderRadius: "2px" }}
                       >
                         QUEDARME EN CONTACTO <ArrowRight size={16} />
-                      </a>
+                      </Link>
                     </div>
                   ) : (
                     <form onSubmit={handleLead} className="flex flex-col gap-4">

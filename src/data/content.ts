@@ -22,13 +22,20 @@ import type { LucideIcon } from "lucide-react";
 export type NavLink = { label: string; href: string };
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Requisitos", href: "#requisitos" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Galería", href: "#galeria" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "Programas", href: "/programas" },
+  { label: "Requisitos", href: "/requisitos" },
+  { label: "Proyectos", href: "/proyectos" },
+  { label: "Servicios", href: "/servicios" },
+  { label: "Nosotros", href: "/nosotros" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Galería", href: "/galeria" },
+];
+
+export const PROGRAM_LINKS: NavLink[] = [
+  { label: "Techo Propio", href: "/programas/techo-propio" },
+  { label: "Bono de Reforzamiento", href: "/programas/reforzamiento" },
+  { label: "Crédito MiVivienda", href: "/programas/credito-mivivienda" },
 ];
 
 export type Service = { icon: LucideIcon; title: string; desc: string };
@@ -61,12 +68,13 @@ export const CONTACT = {
   ],
 };
 
-export type Testimonial = { name: string; location: string; text: string; stars: number };
+export type Testimonial = { name: string; location: string; text: string; stars: number; photo: string };
 
 export const TESTIMONIALS: Testimonial[] = [
-  { name: "Carlos Ramos", location: "Lima, Perú", text: "Excelente atención desde el primer día. Mi casa quedó exactamente como la veía en los renders. Cumplieron el plazo al 100%.", stars: 5 },
-  { name: "María Flores", location: "Ica, Perú", text: "El equipo de Consorcio Constructor me orientó en todo el proceso. Calidad de materiales impresionante para el precio.", stars: 5 },
-  { name: "Jorge Mendoza", location: "Arequipa, Perú", text: "Contraté el modelo familiar plus y estoy más que contento. El trato fue siempre profesional y transparente.", stars: 5 },
+  { name: "Carlos Ramos", location: "Lima, Perú", text: "Excelente atención desde el primer día. Mi casa quedó exactamente como la veía en los renders. Cumplieron el plazo al 100%.", stars: 5, photo: "/Clientes/cliente1.png" },
+  { name: "María Flores", location: "Ica, Perú", text: "El equipo de Consorcio Constructor me orientó en todo el proceso. Calidad de materiales impresionante para el precio.", stars: 5, photo: "/Clientes/cliente2.png" },
+  { name: "Jorge Mendoza", location: "Arequipa, Perú", text: "Contraté el modelo familiar plus y estoy más que contento. El trato fue siempre profesional y transparente.", stars: 5, photo: "/Clientes/cliente4 familai de 4.png" },
+  { name: "Rosa Paredes", location: "La Libertad, Perú", text: "Mi bono Techo Propio parecía imposible y con su acompañamiento lo logré. Hoy vivo con mis hijos en nuestra propia casa.", stars: 5, photo: "/Clientes/cliente3 mama con sus hijos.png" },
 ];
 
 export type ReelSlide = { title: string; text: string; url: string; img: string };

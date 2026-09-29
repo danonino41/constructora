@@ -12,7 +12,7 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {TESTIMONIALS.map((t, i) => (
             <div key={i} className="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
               <div className="flex gap-1 mb-4">
@@ -23,9 +23,14 @@ export default function Testimonials() {
               <p className="text-gray-600 leading-relaxed" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.92rem" }}>
                 "{t.text}"
               </p>
-              <div className="mt-5 pt-5 border-t border-gray-200">
-                <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49" }}>{t.name}</div>
-                <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.78rem", color: "#f5b700" }}>{t.location}</div>
+              <div className="mt-5 pt-5 border-t border-gray-200 flex items-center gap-3.5">
+                <div className="overflow-hidden flex-shrink-0" style={{ width: 52, height: 52, borderRadius: "50%", border: "2px solid #f5b700" }}>
+                  <img src={t.photo} alt={`Foto de ${t.name}`} loading="lazy" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49" }}>{t.name}</div>
+                  <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.78rem", color: "#f5b700" }}>{t.location}</div>
+                </div>
               </div>
             </div>
           ))}

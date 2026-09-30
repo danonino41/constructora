@@ -76,7 +76,7 @@ export default function HeroInicio() {
               }}
             >
               Te acompañamos desde la evaluación de tu perfil hasta la entrega de tu vivienda.
-              Gestionamos los programas oficiales del Estado para que leverages tu bono o crédito
+              Gestionamos los programas oficiales del Estado para que aproveches tu bono o crédito
               sin perder tiempo ni cometiendo errores.
             </p>
 

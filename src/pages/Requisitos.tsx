@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-import { ArrowRight, BadgeCheck, CheckCircle2, ExternalLink, MessageCircle, Wallet } from "lucide-react";
+import { ArrowRight, BadgeCheck, CheckCircle2, ExternalLink, Wallet } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { PROGRAMAS_DETALLE } from "@/data/programas";
 import SectionNav from "@/sections/SectionNav";
 import QualificationQuiz from "@/sections/QualificationQuiz";
@@ -203,10 +204,10 @@ export default function Requisitos() {
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-3">
               <Link to="/contacto" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.92rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
-                COTIZAR AHORA <ArrowRight size={16} />
+                SOLICITA INFORMACIÓN <ArrowRight size={16} />
               </Link>
               <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-7 py-3.5 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.92rem", letterSpacing: "0.08em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
-                <MessageCircle size={16} /> WHATSAPP
+                <WhatsAppIcon size={16} /> WHATSAPP
               </a>
             </div>
           </div>

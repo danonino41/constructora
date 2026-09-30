@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from "react-router";
-import { ArrowLeft, ArrowRight, BadgeCheck, CheckCircle2, Download, ExternalLink, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, BadgeCheck, CheckCircle2, Download, ExternalLink } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { PROGRAMAS_DETALLE } from "@/data/programas";
 import SectionNav from "@/sections/SectionNav";
 
@@ -40,7 +41,7 @@ export default function ProgramaDetalle() {
               SOLICITA INFORMACIÓN <ArrowRight size={16} />
             </Link>
             <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
-              <MessageCircle size={16} /> ESCRÍBENOS
+              <WhatsAppIcon size={16} /> ESCRÍBENOS
             </a>
           </div>
         </div>
@@ -170,7 +171,7 @@ export default function ProgramaDetalle() {
               No te preocupes por memorizar las reglas. Cuéntanos tu situación —si tienes terreno, si buscas comprar, cuántos ingresos tiene tu familia— y un asesor revisa tu caso con la normativa vigente y te dice con claridad si puedes postular y qué pasos siguen.
             </p>
             <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 font-bold hover:opacity-80" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.88rem", color: "#f5b700", letterSpacing: "0.04em" }}>
-              <MessageCircle size={16} /> ESCRÍBENOS POR WHATSAPP
+              <WhatsAppIcon size={16} /> ESCRÍBENOS POR WHATSAPP
             </a>
           </div>
         </div>
@@ -219,7 +220,7 @@ export default function ProgramaDetalle() {
               Cuéntanos tu situación y un asesor te orienta sin compromiso.
             </p>
             <Link to="/contacto" className="mt-5 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.95rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
-              COTIZAR AHORA <ArrowRight size={16} />
+              SOLICITA INFORMACIÓN <ArrowRight size={16} />
             </Link>
           </div>
         </div>

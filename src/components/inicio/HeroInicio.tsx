@@ -1,11 +1,13 @@
+"use client";
+
 import { useCallback } from "react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 import obraEnProceso from "@/imports/casa base 1, en fachas grises (osea solo ladrillo y cemento).jpeg";
 
 /** Desplaza a un id del documento; si no existe en la página actual, navega a la ruta equivalente. */
 function useAnchorNavigation() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return useCallback(
     (id: string, fallbackPath: string) => {
@@ -14,9 +16,9 @@ function useAnchorNavigation() {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
         return;
       }
-      navigate(fallbackPath);
+      router.push(fallbackPath);
     },
-    [navigate]
+    [router]
   );
 }
 
@@ -156,7 +158,7 @@ export default function HeroInicio() {
               }}
             >
               <img
-                src={obraEnProceso}
+                src={obraEnProceso.src}
                 alt="Vivienda en proceso de construcción de brick y cemento"
                 loading="eager"
                 decoding="async"

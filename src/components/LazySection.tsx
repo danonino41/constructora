@@ -1,3 +1,5 @@
+"use client";
+
 import { Suspense, useEffect, useRef, useState } from "react";
 import type { ComponentType, LazyExoticComponent } from "react";
 

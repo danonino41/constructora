@@ -21,7 +21,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="text-gray-600 leading-relaxed" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.92rem" }}>
-                "{t.text}"
+                “{t.text}”
               </p>
               <div className="mt-5 pt-5 border-t border-gray-200 flex items-center gap-3.5">
                 <div className="overflow-hidden flex-shrink-0" style={{ width: 52, height: 52, borderRadius: "50%", border: "2px solid #f5b700" }}>

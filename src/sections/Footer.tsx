@@ -1,4 +1,6 @@
-import { Link } from "react-router";
+"use client";
+
+import Link from "next/link";
 import { Facebook, MapPin, Phone, Users } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { NAV_LINKS, CONTACT } from "@/data/content";
@@ -16,8 +18,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12">
           <div>
-            <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="Consorcio Constructor" className="h-12 w-auto" />
+            <Link href="/" className="flex items-center gap-3">
+              <img src={logo.src} alt="Consorcio Constructor" className="h-12 w-auto" />
             </Link>
             <p className="mt-4" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 400, fontSize: "0.85rem", color: "#6b7480", lineHeight: 1.7 }}>
               Construyendo viviendas sociales llave en mano con el respaldo de los programas del MVCS.
@@ -39,11 +41,11 @@ export default function Footer() {
             <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49", letterSpacing: "0.1em", marginBottom: "1rem", fontSize: "0.85rem" }}>PROGRAMAS</div>
             <div className="flex flex-col gap-2.5">
               {FOOTER_PROGRAMS.map((p) => (
-                <Link key={p.label} to={p.href} className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#6b7480" }}>
+                <Link key={p.label} href={p.href} className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#6b7480" }}>
                   {p.label}
                 </Link>
               ))}
-              <Link to="/programas" className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", fontWeight: 600 }}>
+              <Link href="/programas" className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", fontWeight: 600 }}>
                 Ver todos los programas →
               </Link>
             </div>
@@ -53,7 +55,7 @@ export default function Footer() {
             <div style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#4a4a49", letterSpacing: "0.1em", marginBottom: "1rem", fontSize: "0.85rem" }}>EXPLORA</div>
             <div className="flex flex-col gap-2.5">
               {NAV_LINKS.filter((l) => l.label !== "Programas").map((l) => (
-                <Link key={l.label} to={l.href} className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#6b7480" }}>
+                <Link key={l.label} href={l.href} className="transition-colors hover:text-primary" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#6b7480" }}>
                   {l.label}
                 </Link>
               ))}
@@ -96,7 +98,7 @@ export default function Footer() {
             <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.06em", borderRadius: "3px" }}>
               <WhatsAppIcon size={16} /> ESCRIBENOS POR WHATSAPP
             </a>
-            <Link to="/contacto" className="inline-flex items-center gap-2 px-6 py-3 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.06em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
+            <Link href="/contacto" className="inline-flex items-center gap-2 px-6 py-3 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.06em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
               <Phone size={16} /> CONTACTO
             </Link>
           </div>

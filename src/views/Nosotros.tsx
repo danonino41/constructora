@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { STATS, TESTIMONIALS } from "@/data/content";
 import equipo from "@/imports/equipo-en-obra.jpg";
 
@@ -48,7 +48,7 @@ export default function Nosotros() {
               className="overflow-hidden"
               style={{ aspectRatio: "4/3", borderRadius: "8px", boxShadow: "0 18px 40px rgba(0,0,0,0.18)", background: "linear-gradient(135deg,#dfe4ea,#c5ced9)" }}
             >
-              <img src={equipo} alt="Nuestro equipo en obra, Lima 2026" className="w-full h-full object-cover" />
+              <img src={equipo.src} alt="Nuestro equipo en obra, Lima 2026" className="w-full h-full object-cover" />
             </div>
             <figcaption style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.82rem", fontWeight: 600, color: "#6b7480", marginTop: "0.6rem" }}>
               Nuestro equipo en obra, Lima — 2026
@@ -99,7 +99,7 @@ export default function Nosotros() {
               { strong: "Especialistas en programas de vivienda social", text: "Nuestro trabajo diario es la vivienda de interés social, no un servicio más entre muchos." },
               { strong: "Trámites resueltos por nosotros", text: "Tú nos entregas tus datos; nosotros nos ocupamos del expediente y del seguimiento." },
               { strong: "Normativa al día", text: "Seguimos los requisitos vigentes para que tu postulación no se retrase por errores evitables." },
-            ].map((item, i) => (
+            ].map((item) => (
               <li key={item.strong} className="relative pl-10 pb-6" style={{ borderBottom: "1px solid #e4e7ec" }}>
                 <span className="absolute left-0 top-1.5 w-4 h-4" style={{ borderRadius: "50%", background: "#f5b700" }} />
                 <strong className="block" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, fontSize: "1rem", color: "#4a4a49" }}>
@@ -220,7 +220,7 @@ export default function Nosotros() {
             Cuéntanos tu situación y te orientamos sin compromiso: qué necesitas para postular, qué opciones tienes y cuáles son los siguientes pasos.
           </p>
           <Link
-            to="/contacto"
+            href="/contacto"
             className="mt-7 inline-flex items-center gap-3 bg-primary text-primary-foreground px-9 py-4 font-bold transition-all hover:opacity-90 hover:scale-105"
             style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "1rem", letterSpacing: "0.1em", borderRadius: "6px" }}
           >

@@ -1,12 +1,15 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { NAV_LINKS, PROGRAM_LINKS } from "@/data/content";
 import logo from "@/imports/logo.png";
 
 export default function Navbar() {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -19,7 +22,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <nav
@@ -35,7 +38,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-5 md:px-6 py-3 md:py-4 flex items-center justify-between gap-4">
         {/* Logo protagonista */}
         <Link
-          to="/"
+          href="/"
           onClick={() => setOpen(false)}
           className="flex items-center gap-3 shrink-0 group"
           aria-label="Consorcio Constructor - Inicio"
@@ -50,7 +53,7 @@ export default function Navbar() {
             }}
           >
             <img
-              src={logo}
+              src={logo.src}
               alt="Consorcio Constructor"
               className="w-auto object-contain h-12 sm:h-14 md:h-16 lg:h-20"
             />
@@ -86,7 +89,7 @@ export default function Navbar() {
             l.label === "Programas" ? (
               <div key={l.label} className="relative group">
                 <button
-                  onClick={() => { setOpen(false); navigate("/programas"); }}
+                  onClick={() => { setOpen(false); router.push("/programas"); }}
                   className="inline-flex items-center gap-1 text-sm transition-colors duration-200 hover:text-primary"
                   style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 500, color: "#3d3d3c", letterSpacing: "0.05em", cursor: "pointer" }}
                 >
@@ -98,7 +101,7 @@ export default function Navbar() {
                     {PROGRAM_LINKS.map((p) => (
                       <Link
                         key={p.label}
-                        to={p.href}
+                        href={p.href}
                         className="block px-5 py-2.5 text-sm text-gray-700 transition-colors hover:bg-[#f8f8f8] hover:text-[#173B66]"
                         style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }}
                       >
@@ -106,7 +109,7 @@ export default function Navbar() {
                       </Link>
                     ))}
                     <div className="my-1.5 border-t border-gray-100" />
-                    <Link to="/programas" className="flex items-center justify-between px-5 py-2.5 text-sm font-bold text-[#173B66] transition-colors hover:bg-[#f8f8f8]" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }}>
+                    <Link href="/programas" className="flex items-center justify-between px-5 py-2.5 text-sm font-bold text-[#173B66] transition-colors hover:bg-[#f8f8f8]" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }}>
                       Ver todos los programas
                     </Link>
                   </div>
@@ -115,7 +118,7 @@ export default function Navbar() {
             ) : (
               <Link
                 key={l.label}
-                to={l.href}
+                href={l.href}
                 className="text-sm transition-colors duration-200 hover:text-primary"
                 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 500, color: "#3d3d3c", letterSpacing: "0.05em" }}
               >
@@ -124,7 +127,7 @@ export default function Navbar() {
             )
           )}
           <Link
-            to="/contacto"
+            href="/contacto"
             className="bg-primary text-primary-foreground px-5 py-2.5 text-sm font-bold whitespace-nowrap shrink-0 transition-all hover:opacity-90 hover:scale-105"
             style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', letterSpacing: "0.08em", borderRadius: "3px" }}
           >
@@ -148,25 +151,25 @@ export default function Navbar() {
             <div key={l.label} className="flex flex-col gap-3">
               {l.label === "Programas" ? (
                 <>
-                  <Link to="/programas" className="text-sm text-gray-600 hover:text-primary transition-colors" onClick={() => setOpen(false)}>
+                  <Link href="/programas" className="text-sm text-gray-600 hover:text-primary transition-colors" onClick={() => setOpen(false)}>
                     Programas
                   </Link>
                   <div className="pl-4 flex flex-col gap-2.5 border-l-2" style={{ borderColor: "#f5b700" }}>
                     {PROGRAM_LINKS.map((p) => (
-                      <Link key={p.label} to={p.href} className="text-sm text-gray-600 hover:text-primary transition-colors" onClick={() => setOpen(false)}>
+                      <Link key={p.label} href={p.href} className="text-sm text-gray-600 hover:text-primary transition-colors" onClick={() => setOpen(false)}>
                         {p.label}
                       </Link>
                     ))}
                   </div>
                 </>
               ) : (
-                <Link to={l.href} className="text-sm text-gray-600 hover:text-primary transition-colors" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }} onClick={() => setOpen(false)}>
+                <Link href={l.href} className="text-sm text-gray-600 hover:text-primary transition-colors" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif' }} onClick={() => setOpen(false)}>
                   {l.label}
                 </Link>
               )}
             </div>
           ))}
-          <Link to="/contacto" className="bg-primary text-primary-foreground px-5 py-3 text-sm font-bold text-center transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', letterSpacing: "0.08em", borderRadius: "3px" }} onClick={() => setOpen(false)}>
+          <Link href="/contacto" className="bg-primary text-primary-foreground px-5 py-3 text-sm font-bold text-center transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', letterSpacing: "0.08em", borderRadius: "3px" }} onClick={() => setOpen(false)}>
             SOLICITA INFORMACIÓN
           </Link>
         </div>

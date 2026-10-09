@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowRight, BadgeCheck, CheckCircle2, ExternalLink, Wallet } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { PROGRAMAS_DETALLE } from "@/data/programas";
@@ -87,7 +87,7 @@ export default function Requisitos() {
                     ))}
                   </div>
                   <Link
-                    to={`/programas/${slug}`}
+                    href={`/programas/${slug}`}
                     className="mt-auto pt-6 inline-flex items-center gap-2 font-bold transition-all hover:gap-3"
                     style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", letterSpacing: "0.04em" }}
                   >
@@ -203,7 +203,7 @@ export default function Requisitos() {
               Revisamos tu caso con la normativa vigente y te decimos con claridad si puedes postular y qué pasos siguen.
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-3">
-              <Link to="/contacto" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.92rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
+              <Link href="/contacto" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.92rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
                 SOLICITA INFORMACIÓN <ArrowRight size={16} />
               </Link>
               <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-7 py-3.5 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.92rem", letterSpacing: "0.08em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>

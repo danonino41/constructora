@@ -18,10 +18,10 @@ export default function About() {
   ];
 
   const evidencia = [
-    { img: evidenciaObra, titulo: "En obra", desc: "Nuestro personal técnico trabajando en el armado estructural." },
-    { img: evidenciaAvance, titulo: "Avance de obra", desc: "Levantamiento de muros con equipos de seguridad completos." },
-    { img: evidenciaCambio, titulo: "Antes y después", desc: "El cambio real que dejamos en cada vivienda entregada." },
-    { img: equipoEnObra, titulo: "Nuestro equipo", desc: "El grupo humano detrás de cada proyecto Techo Propio." },
+    { img: evidenciaObra.src, titulo: "En obra", desc: "Nuestro personal técnico trabajando en el armado estructural." },
+    { img: evidenciaAvance.src, titulo: "Avance de obra", desc: "Levantamiento de muros con equipos de seguridad completos." },
+    { img: evidenciaCambio.src, titulo: "Antes y después", desc: "El cambio real que dejamos en cada vivienda entregada." },
+    { img: equipoEnObra.src, titulo: "Nuestro equipo", desc: "El grupo humano detrás de cada proyecto Techo Propio." },
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function About() {
 
           <div className="relative">
             <div className="overflow-hidden rounded-lg shadow-2xl" style={{ border: "6px solid #ffffff", transform: "rotate(1.2deg)" }}>
-              <img src={equipoEnObra} alt="Nuestro equipo en obra" className="w-full h-80 object-cover" />
+              <img src={equipoEnObra.src} alt="Nuestro equipo en obra" className="w-full h-80 object-cover" />
             </div>
             <div className="mt-4 ml-6" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.82rem", color: "#4a4a49" }}>
               <span style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 700, color: "#173B66" }}>Nuestro equipo en obra, Lima — 2026</span>

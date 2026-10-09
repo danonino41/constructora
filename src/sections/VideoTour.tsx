@@ -1,7 +1,8 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import heroBg from "@/imports/VIDEO_RECORRIDO_3D.mp4";
 import poster from "@/imports/casa terminada en color amarillo desde un angulo superior derecho.jpeg";
+
+const heroBg = "/videos/recorrido-3d.mp4";
 
 export default function VideoTour() {
   return (
@@ -18,7 +19,7 @@ export default function VideoTour() {
               Antes de construir, te mostramos cada rincón de tu vivienda con un recorrido 3D completo. Visualiza los espacios, los acabados y la distribución exacta del modelo que elijas.
             </p>
             <Link
-              to="/contacto"
+              href="/contacto"
               className="mt-8 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-bold transition-all hover:opacity-90 hover:scale-105"
               style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "1rem", letterSpacing: "0.1em", borderRadius: "8px" }}
             >
@@ -28,7 +29,7 @@ export default function VideoTour() {
           <div className="relative overflow-hidden shadow-xl" style={{ borderRadius: "12px", border: "1px solid #e5e5e5" }}>
             <video
               src={heroBg}
-              poster={poster}
+              poster={poster.src}
               preload="none"
               controls
               playsInline

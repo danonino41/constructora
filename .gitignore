@@ -1,6 +1,9 @@
 node_modules
+.next
+out
 dist
 .vite
+next-env.d.ts
 *.local
 .env
 .env.local

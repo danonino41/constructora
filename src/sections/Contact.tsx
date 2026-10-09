@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Mail, MapPin, Facebook, Send, ShieldCheck, ChevronDown, RotateCcw } from "lucide-react";
 import { CONTACT } from "@/data/content";

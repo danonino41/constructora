@@ -1,5 +1,7 @@
+"use client";
+
 import { useMemo, useState } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowRight, MapPin, CheckCircle, Building2, Home } from "lucide-react";
 import { PERU_MAP } from "@/lib/peru-map";
 import { CONTACT } from "@/data/content";
@@ -270,7 +272,7 @@ function PresenceMap() {
                   <div className="mt-4 flex flex-wrap items-center gap-4">
                     {detail.kind === "bono" && (
                       <Link
-                        to="/programas/techo-propio"
+                        href="/programas/techo-propio"
                         className="inline-flex items-center gap-2 font-bold transition-all hover:gap-3"
                         style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", letterSpacing: "0.04em" }}
                       >

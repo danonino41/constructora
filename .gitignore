@@ -1,4 +1,6 @@
 node_modules
+.next
+out
 dist
 .vite
 *.local
@@ -9,3 +11,4 @@ dist
 .env.production.local
 .DS_Store
 *.tsbuildinfo
+next-env.d.ts

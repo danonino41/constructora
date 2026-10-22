@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowRight, BadgeCheck, CheckCircle2, Download, ExternalLink } from "lucide-react";
 
 const PROGRAMS = [
@@ -75,7 +75,7 @@ export default function Programs() {
               </div>
 
               <Link
-                to={p.href}
+                href={p.href}
                 className="mt-auto pt-6 inline-flex items-center gap-2 font-bold transition-all hover:gap-3"
                 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", letterSpacing: "0.06em", color: "#173B66" }}
               >
@@ -146,7 +146,7 @@ export default function Programs() {
             </ul>
             <div className="mt-auto flex flex-col sm:flex-row gap-3 pt-8">
               <Link
-                to="/contacto"
+                href="/contacto"
                 className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-bold transition-all hover:opacity-90"
                 style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", letterSpacing: "0.06em", borderRadius: "3px" }}
               >

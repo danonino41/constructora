@@ -1,4 +1,6 @@
-import { Link, Navigate, useParams } from "react-router";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight, BadgeCheck, CheckCircle2, Download, ExternalLink } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { PROGRAMAS_DETALLE } from "@/data/programas";
@@ -14,17 +16,31 @@ const SECTIONS = [
 
 const NAV_OFFSET = 130;
 
-export default function ProgramaDetalle() {
-  const { slug } = useParams();
-  const p = slug ? PROGRAMAS_DETALLE[slug] : undefined;
+export function generateStaticParams() {
+  return Object.keys(PROGRAMAS_DETALLE).map((slug) => ({ slug }));
+}
 
-  if (!p) return <Navigate to="/programas" replace />;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const p = PROGRAMAS_DETALLE[slug];
+  if (!p) return { title: "Programa no encontrado" };
+  return {
+    title: `${p.heroTitle} | Consorcio Constructor`,
+    description: p.heroSub,
+  };
+}
+
+export default async function ProgramaDetalle({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const p = PROGRAMAS_DETALLE[slug];
+
+  if (!p) notFound();
 
   return (
     <div className="pt-20">
       <section className="py-20" style={{ background: "#173B66" }}>
         <div className="max-w-7xl mx-auto px-6">
-          <Link to="/programas" className="inline-flex items-center gap-2 transition-colors hover:opacity-80" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.8rem", color: "#f5b700", letterSpacing: "0.08em" }}>
+          <Link href="/programas" className="inline-flex items-center gap-2 transition-colors hover:opacity-80" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.8rem", color: "#f5b700", letterSpacing: "0.08em" }}>
             <ArrowLeft size={14} /> VOLVER A PROGRAMAS
           </Link>
           <span className="block mt-6" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.75rem", fontWeight: 700, color: "#f5b700", letterSpacing: "0.2em" }}>
@@ -37,7 +53,7 @@ export default function ProgramaDetalle() {
             {p.heroSub}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contacto" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
+            <Link href="/contacto" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
               SOLICITA INFORMACIÓN <ArrowRight size={16} />
             </Link>
             <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
@@ -157,7 +173,7 @@ export default function ProgramaDetalle() {
               <a href="https://wa.me/51993611523" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.88rem", letterSpacing: "0.06em", borderRadius: "3px" }}>
                 <Download size={15} /> DESCARGA REQUISITOS
               </a>
-              <Link to="/contacto" className="inline-flex items-center gap-2 px-6 py-3 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.88rem", letterSpacing: "0.06em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
+              <Link href="/contacto" className="inline-flex items-center gap-2 px-6 py-3 font-bold transition-all hover:bg-white/10" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.88rem", letterSpacing: "0.06em", color: "#ffffff", borderRadius: "3px", border: "1px solid rgba(255,255,255,0.6)" }}>
                 SOLICITA INFORMACIÓN
               </Link>
             </div>
@@ -219,7 +235,7 @@ export default function ProgramaDetalle() {
             <p className="mt-2" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.92rem", color: "#dfe6f0" }}>
               Cuéntanos tu situación y un asesor te orienta sin compromiso.
             </p>
-            <Link to="/contacto" className="mt-5 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.95rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
+            <Link href="/contacto" className="mt-5 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 font-bold transition-all hover:opacity-90" style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.95rem", letterSpacing: "0.08em", borderRadius: "3px" }}>
               SOLICITA INFORMACIÓN <ArrowRight size={16} />
             </Link>
           </div>

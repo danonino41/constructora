@@ -1,5 +1,7 @@
+"use client";
+
 import { lazy } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import Hero from "@/sections/Hero";
 import { LazySection } from "@/app/LazySection";
 
@@ -23,7 +25,7 @@ export default function Home() {
             Cuéntanos tu situación y te orientamos sin compromiso: qué necesitas para postular, qué opciones tienes y cuáles son los siguientes pasos.
           </p>
           <Link
-            to="/contacto"
+            href="/contacto"
             className="mt-8 inline-flex items-center gap-3 bg-primary text-primary-foreground px-9 py-4 font-bold transition-all hover:opacity-90 hover:scale-105"
             style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "1rem", letterSpacing: "0.1em", borderRadius: "8px" }}
           >

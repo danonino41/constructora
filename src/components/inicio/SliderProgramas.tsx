@@ -1,11 +1,13 @@
+"use client";
+
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Pause, Play, ArrowRight } from "lucide-react";
 
-import casaTechoPropio from "@/imports/casa terminada en color amarillo de un piso desde el frontal.jpeg";
+import casaTechoPropio from "@/imports/casa-terminada-amarillo-un-piso.jpeg";
 import obraRefuerzo from "@/imports/evidencia-avance.jpg";
-import casaTerminada from "@/imports/casa terminada en color amarillo con la puerta abierta.jpeg";
+import casaTerminada from "@/imports/casa-terminada-amarillo-puerta-abierta.jpeg";
 
 type Slide = {
   key: string;
@@ -21,7 +23,7 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     key: "techo-propio",
-    img: casaTechoPropio,
+    img: casaTechoPropio.src,
     alt: "Vivienda Techo Propio terminada y lista para habitar",
     tag: "PROGRAMA 01",
     title: "Techo Propio",
@@ -31,7 +33,7 @@ const SLIDES: Slide[] = [
   },
   {
     key: "reforzamiento",
-    img: obraRefuerzo,
+    img: obraRefuerzo.src,
     alt: "Obra de reforzamiento estructural en vivienda existente",
     tag: "PROGRAMA 02",
     title: "Bono de Reforzamiento Estructural",
@@ -41,7 +43,7 @@ const SLIDES: Slide[] = [
   },
   {
     key: "credito-mivivienda",
-    img: casaTerminada,
+    img: casaTerminada.src,
     alt: "Casa terminada con acceso abierto, ejemplo de crédito MiVivienda",
     tag: "PROGRAMA 03",
     title: "Nuevo Crédito MiVivienda",
@@ -230,7 +232,7 @@ export default function SliderProgramas() {
                         </p>
                         <div className="mt-6 flex flex-wrap items-center gap-4">
                           <Link
-                            to={s.href}
+                            href={s.href}
                             className="inline-flex items-center gap-2.5 px-6 py-3 font-bold transition-all duration-300 hover:-translate-y-0.5"
                             style={{
                               background: "#ffffff",

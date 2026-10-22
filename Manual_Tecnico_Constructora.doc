@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Manual técnico - Consorcio Constructor</title>
+  <style>
+    @page { size: A4; margin: 2cm; }
+    body { font-family: Calibri, Arial, sans-serif; color: #263238; line-height: 1.45; font-size: 11pt; }
+    h1 { color: #173b66; font-size: 25pt; margin-bottom: 6pt; }
+    h2 { color: #173b66; border-bottom: 2px solid #f5b700; padding-bottom: 4pt; margin-top: 22pt; }
+    h3 { color: #4a4a49; margin-top: 15pt; }
+    p { margin: 6pt 0; }
+    code, pre { font-family: Consolas, "Courier New", monospace; font-size: 9pt; }
+    pre { background: #f4f6f8; border-left: 4px solid #f5b700; padding: 10pt; white-space: pre-wrap; }
+    table { border-collapse: collapse; width: 100%; margin: 8pt 0 14pt; }
+    th { background: #173b66; color: white; text-align: left; }
+    th, td { border: 1px solid #cfd6dc; padding: 6pt; vertical-align: top; }
+    tr:nth-child(even) td { background: #f7f8f9; }
+    .cover { text-align: center; padding-top: 120pt; page-break-after: always; }
+    .cover .bar { height: 9pt; background: #f5b700; margin: 35pt 90pt; }
+    .muted { color: #66727d; }
+    .note { background: #fff8df; border-left: 4px solid #f5b700; padding: 9pt 12pt; }
+    .page-break { page-break-before: always; }
+    ul { margin-top: 4pt; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <div class="bar"></div>
+    <h1>Manual técnico del proyecto web</h1>
+    <h2>Consorcio Constructor</h2>
+    <p class="muted">Documento técnico para operación, mantenimiento y transferencia del proyecto</p>
+    <p><strong>Versión del documento:</strong> 1.0</p>
+    <p><strong>Fecha:</strong> 4 de octubre de 2026</p>
+    <div class="bar"></div>
+    <p class="muted">Documento elaborado a partir de la estructura y configuración presentes en el repositorio.</p>
+  </section>
+
+  <h2>1. Propósito y alcance</h2>
+  <p>Este manual describe la implementación técnica del sitio web de Consorcio Constructor: lenguajes, framework, herramientas de desarrollo, estructura del código, dependencias, rutas, manejo de contenido, integraciones externas, comandos de operación y recomendaciones de mantenimiento.</p>
+  <p>La aplicación es un frontend web del lado del cliente. Su objetivo principal es presentar programas de vivienda, proyectos, servicios, requisitos, galería, preguntas frecuentes y canales de contacto.</p>
+  <div class="note"><strong>Alcance verificado:</strong> el código analizado no contiene servidor propio, API REST/GraphQL, autenticación, base de datos ni almacenamiento persistente de leads. Las interacciones de contacto abren WhatsApp o el cliente de correo del usuario.</div>
+
+  <h2>2. Resumen del stack tecnológico</h2>
+  <table>
+    <tr><th>Categoría</th><th>Tecnología</th><th>Versión declarada</th><th>Uso</th></tr>
+    <tr><td>Lenguaje principal</td><td>TypeScript</td><td>Sin versión propia declarada</td><td>Archivos <code>.ts</code> y <code>.tsx</code>, tipos, componentes y datos.</td></tr>
+    <tr><td>Lenguaje adicional</td><td>JavaScript / JSX</td><td>ES Modules</td><td>Componente existente <code>ModelosGaleria.jsx</code>.</td></tr>
+    <tr><td>UI principal</td><td>React</td><td>18.3.1</td><td>Componentes, estado, efectos y renderizado.</td></tr>
+    <tr><td>Build tool</td><td>Vite</td><td>6.3.5</td><td>Servidor de desarrollo, compilación y empaquetado.</td></tr>
+    <tr><td>React integration</td><td>@vitejs/plugin-react</td><td>4.7.0</td><td>Transformación y soporte de React en Vite.</td></tr>
+    <tr><td>Routing</td><td>react-router</td><td>7.13.0</td><td>Enrutamiento del lado del cliente con <code>createBrowserRouter</code>.</td></tr>
+    <tr><td>CSS utility framework</td><td>Tailwind CSS</td><td>4.1.12</td><td>Clases utilitarias usadas directamente en los componentes.</td></tr>
+    <tr><td>Tailwind integration</td><td>@tailwindcss/vite</td><td>4.1.12</td><td>Integración de Tailwind con el pipeline de Vite.</td></tr>
+    <tr><td>Componentes UI</td><td>Radix UI</td><td>1.x</td><td>Primitivas accesibles disponibles para accordion, dialog, tabs, tooltip, etc.</td></tr>
+    <tr><td>Componentes UI adicionales</td><td>Material UI</td><td>7.3.5</td><td>Biblioteca disponible para componentes y sus iconos.</td></tr>
+    <tr><td>Iconos usados</td><td>lucide-react</td><td>0.487.0</td><td>Iconos SVG como componentes React.</td></tr>
+    <tr><td>Animación</td><td>motion</td><td>12.23.24</td><td>Dependencia disponible para animaciones declarativas.</td></tr>
+    <tr><td>Procesamiento CSS</td><td>PostCSS</td><td>Configuración presente</td><td>Procesamiento asociado al pipeline de estilos.</td></tr>
+  </table>
+  <p class="muted">Las dependencias listadas en <code>package.json</code> no implican que todas estén importadas por las pantallas actuales. El uso directo confirmado incluye React, react-router, lucide-react, Tailwind, CSS, SVG, portales React y APIs del navegador.</p>
+
+  <h2>3. Lenguajes y estándares</h2>
+  <ul>
+    <li><strong>TypeScript:</strong> lenguaje principal para componentes, páginas, tipos de datos y configuración.</li>
+    <li><strong>TSX:</strong> permite escribir marcado JSX dentro de archivos TypeScript.</li>
+    <li><strong>JavaScript y JSX:</strong> utilizados en el componente de galería de modelos.</li>
+    <li><strong>HTML5:</strong> documento base en <code>index.html</code> y elementos semánticos dentro de React.</li>
+    <li><strong>CSS:</strong> hojas de estilos globales, variables de tema, fuentes y clases utilitarias.</li>
+    <li><strong>SVG:</strong> iconos, mapa interactivo del Perú y logotipo de WhatsApp.</li>
+    <li><strong>ES Modules:</strong> sistema de importación y exportación usado en la aplicación.</li>
+  </ul>
+
+  <h2>4. Arquitectura de la aplicación</h2>
+  <p>El flujo de arranque es:</p>
+  <pre>index.html
+  -> src/main.tsx
+  -> createRoot(document.getElementById("root"))
+  -> RouterProvider
+  -> src/app/Router.tsx
+  -> src/app/Layout.tsx
+  -> Navbar + página activa + Footer</pre>
+  <p><code>main.tsx</code> crea la raíz React y carga <code>src/styles/index.css</code>. El router define las rutas y el layout común mantiene la navegación y el pie de página en todas las vistas.</p>
+  <p>El alias <code>@</code> apunta a <code>src</code>, por lo que imports como <code>@/pages/Home</code> evitan rutas relativas largas.</p>
+
+  <h3>Estructura de carpetas</h3>
+  <table>
+    <tr><th>Ruta</th><th>Responsabilidad</th></tr>
+    <tr><td><code>src/app</code></td><td>Configuración de aplicación, layout, router, componentes de apoyo y mapa.</td></tr>
+    <tr><td><code>src/components</code></td><td>Componentes reutilizables pequeños, por ejemplo el icono de WhatsApp.</td></tr>
+    <tr><td><code>src/pages</code></td><td>Vistas asociadas a rutas del sitio.</td></tr>
+    <tr><td><code>src/sections</code></td><td>Secciones visuales reutilizables de las páginas.</td></tr>
+    <tr><td><code>src/data</code></td><td>Contenido estático tipado: navegación, programas, contactos, testimonios y quiz.</td></tr>
+    <tr><td><code>src/styles</code></td><td>Fuentes, Tailwind, variables de tema y estilos globales.</td></tr>
+    <tr><td><code>src/imports</code></td><td>Recursos importados desde código, como imágenes.</td></tr>
+    <tr><td><code>src/lib</code></td><td>Datos o utilidades de soporte, incluido el trazado del mapa del Perú.</td></tr>
+    <tr><td><code>public</code></td><td>Archivos estáticos servidos directamente, como clientes, modelos, publicaciones y videos.</td></tr>
+  </table>
+
+  <h2>5. Navegación y rutas</h2>
+  <p>El router se configura en <code>src/app/Router.tsx</code> mediante <code>createBrowserRouter</code>. Todas las rutas se renderizan dentro de <code>Layout</code>.</p>
+  <table>
+    <tr><th>Ruta</th><th>Componente</th><th>Función</th></tr>
+    <tr><td><code>/</code></td><td><code>Home</code></td><td>Inicio, hero, mapa de presencia, testimonios y llamada a contacto.</td></tr>
+    <tr><td><code>/proyectos</code></td><td><code>Proyectos</code></td><td>Presentación de proyectos.</td></tr>
+    <tr><td><code>/requisitos</code></td><td><code>Requisitos</code></td><td>Requisitos, topes, ahorro y quiz de orientación.</td></tr>
+    <tr><td><code>/programas</code></td><td><code>Programas</code></td><td>Listado de programas de vivienda.</td></tr>
+    <tr><td><code>/programas/:slug</code></td><td><code>ProgramaDetalle</code></td><td>Detalle dinámico por slug. Redirige a programas si no existe.</td></tr>
+    <tr><td><code>/servicios</code></td><td><code>Servicios</code></td><td>Servicios ofrecidos.</td></tr>
+    <tr><td><code>/nosotros</code></td><td><code>Nosotros</code></td><td>Información institucional y testimonios.</td></tr>
+    <tr><td><code>/galeria</code></td><td><code>Galeria</code></td><td>Galería de imágenes y modelos.</td></tr>
+    <tr><td><code>/contacto</code></td><td><code>Contacto</code></td><td>Formulario de contacto y canales de atención.</td></tr>
+    <tr><td><code>/faqs</code></td><td><code>Faqs</code></td><td>Preguntas frecuentes.</td></tr>
+    <tr><td><code>*</code></td><td><code>Home</code></td><td>Fallback actual para rutas no reconocidas.</td></tr>
+  </table>
+
+  <h2>6. Estilos, tema y diseño visual</h2>
+  <p>La entrada de estilos es <code>src/styles/index.css</code>, que importa fuentes, Tailwind y el tema:</p>
+  <pre>@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';</pre>
+  <p>El tema define variables CSS para fondo, texto, tarjetas, colores primario y secundario, estados destructivos, bordes, anillos de foco y gráficos. La identidad visual usa principalmente azul oscuro <code>#173B66</code>, amarillo <code>#F5B700</code>, gris claro y blanco.</p>
+  <p>Los componentes combinan clases de Tailwind con estilos inline. La tipografía preferida declarada por la interfaz es <code>Myriad Pro</code>, con <code>Segoe UI</code> como alternativa.</p>
+  <p>Vite incorpora el plugin de Tailwind y el plugin de React. También existe un resolver de assets para imports con el prefijo <code>figma:asset/</code>, que busca archivos dentro de <code>src/assets</code>.</p>
+
+  <h2>7. Componentes y comportamiento principal</h2>
+  <table>
+    <tr><th>Componente</th><th>Tecnología o API</th><th>Comportamiento</th></tr>
+    <tr><td><code>Layout</code></td><td><code>useEffect</code>, <code>useLocation</code>, <code>Outlet</code></td><td>Restablece el scroll al cambiar de ruta y permite desplazamiento a una sección mediante estado de navegación.</td></tr>
+    <tr><td><code>QualificationQuiz</code></td><td><code>useState</code>, formulario React</td><td>Cuestionario de 5 pasos, cálculo de resultado en memoria y captura local de datos del interesado.</td></tr>
+    <tr><td><code>Contact</code></td><td><code>useState</code>, <code>useRef</code>, <code>window.open</code>, <code>mailto</code></td><td>Construye mensajes automáticos y abre WhatsApp o correo. No envía datos a un servidor propio.</td></tr>
+    <tr><td><code>PresenceMap</code></td><td><code>useMemo</code>, SVG, eventos de puntero</td><td>Mapa interactivo del Perú con zonas, oficinas, tooltips y cifras.</td></tr>
+    <tr><td><code>ModelosGaleria</code></td><td><code>useState</code>, <code>createPortal</code></td><td>Galería de modelos con modal para visualizar planos externos.</td></tr>
+    <tr><td><code>LazySection</code></td><td>Lazy loading</td><td>Carga secciones pesadas bajo demanda, por ejemplo mapa y testimonios.</td></tr>
+    <tr><td><code>WhatsAppIcon</code></td><td>SVG personalizado</td><td>Icono reutilizable porque el set de iconos utilizado no incluye WhatsApp.</td></tr>
+  </table>
+
+  <h2>8. Gestión de contenido y datos</h2>
+  <p>El contenido está separado de las vistas y se mantiene principalmente en archivos estáticos tipados:</p>
+  <ul>
+    <li><code>src/data/content.ts</code>: navegación, programas destacados, servicios, estadísticas, teléfonos, correo, sedes, testimonios, publicaciones y preguntas del quiz.</li>
+    <li><code>src/data/programas.ts</code>: detalle de Techo Propio, Crédito MiVivienda y Bono de Reforzamiento, incluyendo beneficios, requisitos, pasos, preguntas y fuentes.</li>
+    <li><code>src/lib/peru-map.js</code>: geometría y puntos de referencia del mapa.</li>
+    <li><code>public/</code>: imágenes, videos y otros archivos que se referencian mediante rutas públicas como <code>/modelos/...</code> o <code>/Clientes/...</code>.</li>
+  </ul>
+  <p>Para modificar textos comerciales, teléfonos, sedes o enlaces, se debe priorizar la edición de <code>content.ts</code> y <code>programas.ts</code>, evitando duplicar valores dentro de componentes.</p>
+
+  <h2>9. Integraciones externas</h2>
+  <table>
+    <tr><th>Servicio</th><th>Forma de integración</th><th>Observación</th></tr>
+    <tr><td>WhatsApp</td><td>Enlaces <code>https://wa.me/...</code></td><td>Abre una conversación con un mensaje generado en el navegador.</td></tr>
+    <tr><td>Correo electrónico</td><td>Enlaces <code>mailto:</code></td><td>Depende del cliente de correo instalado en el dispositivo.</td></tr>
+    <tr><td>Google Maps</td><td>Enlaces a <code>maps.app.goo.gl</code></td><td>Abre la ubicación de cada sede.</td></tr>
+    <tr><td>Facebook y TikTok</td><td>Enlaces externos</td><td>Se abren en una pestaña nueva.</td></tr>
+    <tr><td>Google Drive</td><td>URLs de preview</td><td>Se utiliza para visualizar planos de modelos.</td></tr>
+    <tr><td>MVCS y MiVivienda</td><td>Enlaces informativos</td><td>Fuentes externas declaradas en el contenido de programas.</td></tr>
+  </table>
+  <div class="note"><strong>Importante:</strong> el formulario del quiz muestra una confirmación local y el formulario de contacto abre canales externos. No existe en el código revisado una persistencia propia de nombres, teléfonos, correos o solicitudes.</div>
+
+  <h2>10. Dependencias declaradas</h2>
+  <p>Además del núcleo ya descrito, <code>package.json</code> declara las siguientes familias de dependencias:</p>
+  <table>
+    <tr><th>Familia</th><th>Paquetes representativos</th><th>Finalidad</th></tr>
+    <tr><td>Radix UI</td><td>accordion, dialog, dropdown-menu, popover, select, tabs, tooltip, slider, switch</td><td>Primitivas accesibles para interfaces complejas.</td></tr>
+    <tr><td>Material UI</td><td><code>@mui/material</code>, <code>@mui/icons-material</code>, Emotion</td><td>Componentes y sistema de estilos de Material.</td></tr>
+    <tr><td>Formularios</td><td><code>react-hook-form</code>, <code>input-otp</code></td><td>Gestión y controles de formularios.</td></tr>
+    <tr><td>Interacción</td><td><code>cmdk</code>, <code>vaul</code>, <code>react-resizable-panels</code>, <code>react-dnd</code></td><td>Comandos, paneles, drawers y drag and drop.</td></tr>
+    <tr><td>Visualización</td><td><code>recharts</code>, <code>react-responsive-masonry</code></td><td>Gráficos y layouts tipo masonry.</td></tr>
+    <tr><td>Media y carruseles</td><td><code>embla-carousel-react</code>, <code>react-slick</code></td><td>Carruseles y sliders.</td></tr>
+    <tr><td>Utilidades</td><td><code>clsx</code>, <code>tailwind-merge</code>, <code>class-variance-authority</code>, <code>date-fns</code></td><td>Clases, variantes y manipulación de fechas.</td></tr>
+    <tr><td>Otros</td><td><code>canvas-confetti</code>, <code>sonner</code>, <code>next-themes</code>, <code>react-day-picker</code>, <code>react-popper</code></td><td>Efectos, notificaciones, tema, calendario y posicionamiento.</td></tr>
+  </table>
+  <p class="muted">La tabla representa las dependencias declaradas; antes de eliminar una dependencia debe verificarse su uso con una búsqueda de imports en todo <code>src</code>.</p>
+
+  <h2>11. Instalación y ejecución local</h2>
+  <h3>Requisitos</h3>
+  <ul>
+    <li>Node.js compatible con Vite 6.</li>
+    <li>npm o pnpm. El README actual documenta npm.</li>
+    <li>Acceso a Internet para instalar dependencias y abrir enlaces externos.</li>
+  </ul>
+  <h3>Instalación</h3>
+  <pre>npm install</pre>
+  <h3>Servidor de desarrollo</h3>
+  <pre>npm run dev</pre>
+  <p>Vite mostrará la URL local, normalmente <code>http://localhost:5173</code>. El servidor permite recarga rápida durante la edición.</p>
+  <h3>Compilación de producción</h3>
+  <pre>npm run build</pre>
+  <p>El script ejecuta <code>vite build</code> y genera la salida optimizada en <code>dist/</code>, salvo cambios en la configuración.</p>
+  <p>Los scripts declarados actualmente son <code>dev</code> y <code>build</code>. No hay script de pruebas automatizadas ni de lint definido en <code>package.json</code>.</p>
+
+  <h2>12. Despliegue</h2>
+  <p>El resultado de producción es un sitio estático, por lo que puede desplegarse en cualquier hosting que sirva archivos estáticos. Debe publicarse el contenido de <code>dist/</code> después de ejecutar el build.</p>
+  <p>Como se utiliza <code>createBrowserRouter</code>, el servidor debe configurarse para devolver <code>index.html</code> como fallback para rutas internas como <code>/programas</code> o <code>/contacto</code>. Sin este fallback, una recarga directa de una ruta puede responder con 404.</p>
+  <p>También se debe comprobar que las carpetas de <code>public/</code> se hayan copiado y que las URLs externas sigan activas.</p>
+
+  <h2>13. Seguridad, privacidad y operación</h2>
+  <ul>
+    <li>No se observan secretos, claves API ni credenciales en la configuración revisada.</li>
+    <li>Los enlaces externos que abren nueva pestaña usan <code>target="_blank"</code> junto con <code>rel="noopener noreferrer"</code> en los componentes revisados.</li>
+    <li>Los datos introducidos en el formulario de contacto se incorporan a una URL de WhatsApp o correo; no se almacenan localmente por la aplicación.</li>
+    <li>Si en el futuro se agrega un CRM o persistencia de leads, se deberá añadir backend, validación de servidor, protección antispam, política de privacidad y gestión de consentimiento.</li>
+    <li>El contenido de programas y topes económicos debe revisarse contra las fuentes oficiales antes de publicarse, porque puede cambiar con la normativa.</li>
+  </ul>
+
+  <h2>14. Mantenimiento recomendado</h2>
+  <table>
+    <tr><th>Actividad</th><th>Frecuencia sugerida</th><th>Acción</th></tr>
+    <tr><td>Dependencias</td><td>Mensual o por necesidad</td><td>Revisar actualizaciones, vulnerabilidades y compatibilidad de React, Vite y Tailwind.</td></tr>
+    <tr><td>Contenido legal y de programas</td><td>Ante cada cambio normativo</td><td>Validar cifras, requisitos, enlaces y fuentes oficiales.</td></tr>
+    <tr><td>Datos de contacto</td><td>Ante cada cambio comercial</td><td>Actualizar <code>src/data/content.ts</code> y comprobar WhatsApp, correo y sedes.</td></tr>
+    <tr><td>Assets</td><td>Ante cada cambio visual</td><td>Revisar nombres de archivos, mayúsculas y rutas en <code>public/</code>.</td></tr>
+    <tr><td>Build</td><td>Antes de publicar</td><td>Ejecutar <code>npm run build</code> y revisar la salida de Vite.</td></tr>
+    <tr><td>Responsive</td><td>Antes de publicar cambios de UI</td><td>Probar escritorio, tablet y móvil en las rutas principales.</td></tr>
+  </table>
+
+  <h2>15. Limitaciones técnicas actuales</h2>
+  <ul>
+    <li>No hay pruebas unitarias, pruebas de integración ni pruebas end-to-end configuradas.</li>
+    <li>No hay pipeline CI/CD declarado en el proyecto.</li>
+    <li>No hay tipado TypeScript estricto documentado mediante un <code>tsconfig.json</code> visible en la estructura proporcionada.</li>
+    <li>El fallback global de rutas muestra la página de inicio para URLs no reconocidas, en lugar de una pantalla 404 específica.</li>
+    <li>La captura del quiz es una confirmación de interfaz; no equivale a un registro persistente ni a un envío real.</li>
+    <li>La disponibilidad de WhatsApp, correo, mapas, redes sociales y Google Drive depende de servicios de terceros.</li>
+  </ul>
+
+  <h2>16. Referencias del proyecto</h2>
+  <ul>
+    <li><code>package.json</code>: nombre, scripts y versiones de dependencias.</li>
+    <li><code>vite.config.ts</code>: plugins, alias, resolver de assets y tipos de archivos.</li>
+    <li><code>src/main.tsx</code>: punto de entrada.</li>
+    <li><code>src/app/Router.tsx</code>: definición de rutas.</li>
+    <li><code>src/app/Layout.tsx</code>: estructura común y comportamiento de navegación.</li>
+    <li><code>src/data/content.ts</code> y <code>src/data/programas.ts</code>: contenido estático.</li>
+    <li><code>src/styles/index.css</code> y <code>src/styles/theme.css</code>: entrada y variables visuales.</li>
+    <li><code>README.md</code>: instrucciones básicas de instalación y ejecución.</li>
+  </ul>
+
+  <p class="muted">Fin del documento.</p>
+</body>
+</html>

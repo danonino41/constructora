@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Building2, Hammer, Maximize2, X, BedDouble, Bath, Sofa, Layers, Utensils, HardHat, Ruler, Users, Home } from "lucide-react";
 import type { LucideIcon } from "lucide-react";

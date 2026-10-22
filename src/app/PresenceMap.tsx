@@ -1,5 +1,7 @@
+"use client";
+
 import { useMemo, useState } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowRight, MapPin, CheckCircle, Building2, Home } from "lucide-react";
 import { PERU_MAP } from "@/lib/peru-map";
 import { CONTACT } from "@/data/content";
@@ -39,7 +41,7 @@ function PresenceMap() {
   const tooltip = useMemo(() => {
     const zone = hovered ? ZONES[hovered] : undefined;
     if (!hovered || !zone) return null;
-    const spot = PERU_MAP.hotspots[hovered];
+    const spot = (PERU_MAP.hotspots as Record<string, { x: number; y: number }>)[hovered];
     if (!spot) return null;
     const info = zone.type === "bono"
       ? { label: "Bonos entregados", value: (zone.value ?? 0).toLocaleString("es-PE") }
@@ -132,7 +134,7 @@ function PresenceMap() {
                     ))}
 
                     {OFFICES.map((k) => {
-                      const spot = PERU_MAP.hotspots[k];
+                      const spot = (PERU_MAP.hotspots as Record<string, { x: number; y: number }>)[k];
                       if (!spot) return null;
                       const isActive = hovered === k || selected === k;
                       return (
@@ -270,7 +272,7 @@ function PresenceMap() {
                   <div className="mt-4 flex flex-wrap items-center gap-4">
                     {detail.kind === "bono" && (
                       <Link
-                        to="/programas/techo-propio"
+                        href="/programas/techo-propio"
                         className="inline-flex items-center gap-2 font-bold transition-all hover:gap-3"
                         style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontSize: "0.85rem", color: "#173B66", letterSpacing: "0.04em" }}
                       >

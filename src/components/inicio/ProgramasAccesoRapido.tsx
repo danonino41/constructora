@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { ArrowRight, House, Landmark, ShieldCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -156,7 +156,7 @@ export default function ProgramasAccesoRapido() {
                 </p>
 
                 <Link
-                  to="/programas"
+                  href="/programas"
                   className="mt-auto pt-7 inline-flex items-center gap-2 font-bold transition-all duration-300 group-hover:gap-3.5"
                   style={{
                     fontFamily: '"Myriad Pro", "Segoe UI", sans-serif',

@@ -156,7 +156,7 @@ export default function ProgramasAccesoRapido() {
                 </p>
 
                 <Link
-                  href="/programas"
+                  href={`/programas/${c.id}`}
                   className="mt-auto pt-7 inline-flex items-center gap-2 font-bold transition-all duration-300 group-hover:gap-3.5"
                   style={{
                     fontFamily: '"Myriad Pro", "Segoe UI", sans-serif',

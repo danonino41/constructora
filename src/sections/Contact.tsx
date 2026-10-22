@@ -265,7 +265,7 @@ export default function Contact() {
   return (
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 lg:items-center">
           {/* ---------- Columna izquierda: mensaje + datos de contacto ---------- */}
           <div>
             <span style={{ fontFamily: FONT, fontSize: "0.75rem", fontWeight: 500, color: "#f5b700", letterSpacing: "0.2em" }}>HABLEMOS</span>

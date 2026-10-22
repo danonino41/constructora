@@ -24,15 +24,24 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  // En la home (sobre el slider a pantalla completa) el header es transparente
+  // hasta que el usuario hace scroll; en el resto de rutas siempre es sólido.
+  const transparent = pathname === "/" && !scrolled && !open;
+  const linkColor = transparent ? "#ffffff" : "#3d3d3c";
+
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: "rgba(255,255,255,0.92)",
-        borderBottom: "1px solid rgba(23,59,102,0.10)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        boxShadow: scrolled ? "0 8px 28px rgba(23,32,46,0.10)" : "0 2px 12px rgba(23,32,46,0.05)",
+        background: transparent ? "transparent" : "rgba(255,255,255,0.92)",
+        borderBottom: transparent ? "1px solid rgba(255,255,255,0.14)" : "1px solid rgba(23,59,102,0.10)",
+        backdropFilter: transparent ? "none" : "blur(14px)",
+        WebkitBackdropFilter: transparent ? "none" : "blur(14px)",
+        boxShadow: transparent
+          ? "none"
+          : scrolled
+            ? "0 8px 28px rgba(23,32,46,0.10)"
+            : "0 2px 12px rgba(23,32,46,0.05)",
       }}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-6 py-3 md:py-4 flex items-center justify-between gap-4">
@@ -64,7 +73,7 @@ export default function Navbar() {
                 fontFamily: '"Myriad Pro", "Segoe UI", sans-serif',
                 fontWeight: 700,
                 fontSize: "0.95rem",
-                color: "#173B66",
+                color: transparent ? "#ffffff" : "#173B66",
                 letterSpacing: "0.06em",
               }}
             >
@@ -75,7 +84,7 @@ export default function Navbar() {
                 fontFamily: '"Myriad Pro", "Segoe UI", sans-serif',
                 fontWeight: 500,
                 fontSize: "0.7rem",
-                color: "#8a8a88",
+                color: transparent ? "rgba(255,255,255,0.75)" : "#8a8a88",
                 letterSpacing: "0.22em",
               }}
             >
@@ -91,7 +100,7 @@ export default function Navbar() {
                 <button
                   onClick={() => { setOpen(false); router.push("/programas"); }}
                   className="inline-flex items-center gap-1 text-sm transition-colors duration-200 hover:text-primary"
-                  style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 500, color: "#3d3d3c", letterSpacing: "0.05em", cursor: "pointer" }}
+                  style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 500, color: linkColor, letterSpacing: "0.05em", cursor: "pointer" }}
                 >
                   {l.label}
                   <ChevronDown size={13} className="transition-transform duration-200 group-hover:rotate-180" style={{ color: "#f5b700" }} />
@@ -120,7 +129,7 @@ export default function Navbar() {
                 key={l.label}
                 href={l.href}
                 className="text-sm transition-colors duration-200 hover:text-primary"
-                style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 500, color: "#3d3d3c", letterSpacing: "0.05em" }}
+                style={{ fontFamily: '"Myriad Pro", "Segoe UI", sans-serif', fontWeight: 500, color: linkColor, letterSpacing: "0.05em" }}
               >
                 {l.label}
               </Link>
@@ -141,7 +150,7 @@ export default function Navbar() {
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
         >
-          {open ? <X size={26} style={{ color: "#173B66" }} /> : <Menu size={26} style={{ color: "#173B66" }} />}
+          {open ? <X size={26} style={{ color: transparent ? "#ffffff" : "#173B66" }} /> : <Menu size={26} style={{ color: transparent ? "#ffffff" : "#173B66" }} />}
         </button>
       </div>
 

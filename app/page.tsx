@@ -3,10 +3,10 @@
 import { lazy } from "react";
 import Link from "next/link";
 import Hero from "@/sections/Hero";
-import { LazySection } from "@/app/LazySection";
+import { LazySection } from "@/components/common/LazySection";
 
 const Testimonials = lazy(() => import("@/sections/Testimonials"));
-const PresenceMap = lazy(() => import("@/app/PresenceMap"));
+const PresenceMap = lazy(() => import("@/components/inicio/PresenceMap"));
 
 export default function Home() {
   return (

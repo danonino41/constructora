@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Building2, Hammer, Maximize2, X, BedDouble, Bath, Sofa, Layers, Utensils, HardHat, Ruler, Users, Home } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { MODELOS } from "@/app/ModelosGaleria.jsx";
+import { MODELOS } from "@/components/proyectos/ModelosGaleria.jsx";
 import type { ModelItem } from "@/data/content";
 
 const FEAT_ICONS: Record<string, LucideIcon> = {

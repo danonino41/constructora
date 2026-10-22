@@ -84,43 +84,43 @@ export default function PresenceMap() {
   };
 
   return (
-    <section id="zonas-atendidas" className="py-16 md:py-20 bg-slate-50/50 overflow-hidden">
+    <section id="zonas-atendidas" className="py-16 md:py-20 lg:py-10 bg-slate-50/50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ENCABEZADO DE LA SECCIÓN */}
-        <div className="mb-12 text-center md:text-left">
+        <div className="mb-12 lg:mb-6 text-center md:text-left">
           <span className="text-xs font-bold text-[#f5b700] tracking-[0.2em] uppercase block mb-2">
             Lo que hemos logrado
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#4a4a49] tracking-tight leading-none">
+          <h2 className="text-3xl md:text-4xl lg:text-3xl font-extrabold text-[#4a4a49] tracking-tight leading-none">
             MÁS DE 3,367 VIVIENDAS{" "}
             <span className="text-[#f5b700] block md:inline">CONSTRUIDAS EN TODO EL PERÚ</span>
           </h2>
         </div>
 
         {/* CONTENEDOR PRINCIPAL HORIZONTAL */}
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-start">
+        <div className="grid gap-8 lg:gap-6 lg:grid-cols-[1.2fr_0.8fr] items-start lg:items-center">
 
           {/* BLOQUE IZQUIERDO: EL MAPA Y SU DETALLE INTERNO HORIZONTAL */}
           <div className="bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-100/70 overflow-hidden">
 
             {/* Header del mapa */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-[#f5b700]/5">
+            <div className="flex items-center justify-between px-6 py-4 lg:py-2.5 border-b border-slate-100 bg-[#f5b700]/5">
               <div className="flex items-center gap-2">
                 <MapPin size={18} className="text-[#f5b700]" />
                 <span className="font-bold text-sm tracking-wider text-slate-700">ZONAS ATENDIDAS</span>
               </div>
               <div className="text-right">
-                <div className="font-extrabold text-xl text-slate-800 leading-none">{TOTAL_VIVIENDAS.toLocaleString("es-PE")}</div>
+                <div className="font-extrabold text-xl lg:text-lg text-slate-800 leading-none">{TOTAL_VIVIENDAS.toLocaleString("es-PE")}</div>
                 <div className="text-[10px] tracking-wider text-slate-500 uppercase font-medium">Viviendas Edificadas</div>
               </div>
             </div>
 
             {/* Sub-Grid Horizontal: Mapa a la izquierda, Info a la derecha */}
-            <div className="grid md:grid-cols-[1fr_1.1fr] gap-6 p-6 items-center">
+            <div className="grid md:grid-cols-[240px_1fr] gap-6 lg:gap-5 lg:p-4 p-6 items-center justify-center">
 
               {/* Mapa de Perú */}
-              <div className="relative w-full max-w-[240px] sm:max-w-[260px] mx-auto py-2">
+              <div className="relative w-full max-w-[200px] md:max-w-[220px] lg:max-w-[180px] mx-auto py-2 flex items-center justify-center">
                 <svg
                   viewBox={`0 0 ${PERU_MAP.width} ${PERU_MAP.height}`}
                   className="w-full h-auto select-none block"
@@ -177,7 +177,7 @@ export default function PresenceMap() {
               </div>
 
               {/* Panel de Detalle Dinámico Lateral */}
-              <div className="bg-slate-50 border border-slate-100 rounded-xl p-5 h-full flex flex-col justify-between min-h-[300px] md:min-h-[340px]">
+              <div className="bg-slate-50 border border-slate-100 rounded-xl p-5 lg:p-4 flex flex-col justify-between min-h-[260px] md:min-h-[290px] lg:min-h-[220px]">
                 <div>
                   <div className="flex items-center justify-between border-b border-slate-200/60 pb-3 mb-3">
                     <div>
@@ -213,13 +213,13 @@ export default function PresenceMap() {
                 </div>
 
                 {/* Call To Action Dinámico y Contextual */}
-                <div className="mt-4 flex flex-wrap items-center gap-4">
+                <div className="pt-3 border-t border-slate-200/60 mt-4">
                   {detail.kind === "bono" && (
                     <Link
                       href="/programas/techo-propio"
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#173B66] hover:gap-3 transition-all"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#173B66] hover:text-[#f5b700] transition-colors group"
                     >
-                      Ver programa Techo Propio <ArrowRight size={15} className="text-[#f5b700]" />
+                      Ver programa Techo Propio <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </Link>
                   )}
                   {detail.kind === "oficina" && (
@@ -227,9 +227,9 @@ export default function PresenceMap() {
                       href={detail.sede?.map}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#173B66] hover:opacity-80"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#173B66] hover:text-[#f5b700] transition-colors group"
                     >
-                      Ver dirección exacta <ArrowRight size={15} className="text-[#f5b700]" />
+                      Ver dirección exacta <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </a>
                   )}
                   {detail.kind === "sin" && (
@@ -237,42 +237,40 @@ export default function PresenceMap() {
                       href="https://wa.me/51993611523"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-bold text-[#173B66] hover:opacity-80"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#173B66] hover:text-[#f5b700] transition-colors group"
                     >
-                      Consultar por WhatsApp <ArrowRight size={15} className="text-[#f5b700]" />
+                      Consultar por WhatsApp <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </a>
                   )}
-                  <span className="text-[11px] text-slate-400">
+                  <p className="text-[10px] text-slate-400 mt-2">
                     Haz clic en cualquier departamento del mapa para cambiar de región.
-                  </span>
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Leyendas compactadas al fondo del contenedor */}
-            <div className="px-6 pb-5">
-              <div className="flex flex-wrap items-center justify-center gap-6 pt-3 border-t border-slate-100">
-                <span className="inline-flex items-center gap-1.5 text-[11px] text-slate-500">
-                  <span className="inline-block h-3 w-3 rounded-sm bg-[#f5b700]" /> Top Regiones
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-[11px] text-slate-500">
-                  <span className="inline-block h-3 w-3 rounded-full bg-[#d7d5d0]" /> Puntos de atención
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-[11px] text-slate-500">
-                  <span className="inline-block h-3 w-3 rounded-sm border border-[#d0ccc4] bg-[#eceae4]" /> Otras regiones atendidas
-                </span>
-              </div>
+            {/* Leyendas al fondo */}
+            <div className="px-6 py-4 lg:py-2.5 bg-slate-50/50 border-t border-slate-100 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-slate-500">
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 bg-[#f5b700] rounded-sm" /> Top Regiones
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 bg-[#d7d5d0] rounded-sm" /> Puntos de atención
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 bg-[#eceae4] rounded-sm" /> Otras regiones atendidas
+              </span>
             </div>
           </div>
 
           {/* BLOQUE DERECHO: CONTENIDO EDITORIAL DE SOPORTE */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:gap-4">
             <p className="text-sm leading-relaxed text-slate-600">
               Desde nuestros inicios hemos recorrido el territorio nacional entregando viviendas seguras. Nuestro mapa refleja el alcance del programa Techo Propio: gestionamos y construimos con certificación y garantía.
             </p>
 
             {/* Lista de Logros limpia y compacta */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 lg:gap-2">
               {ACHIEVEMENTS.slice(0, 3).map((a) => (
                 <div key={a} className="flex items-center gap-3">
                   <CheckCircle size={16} className="text-[#f5b700] shrink-0" />
@@ -283,7 +281,7 @@ export default function PresenceMap() {
 
             {/* Grid de Micro KPIs */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4 lg:p-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#f5b700]/15">
                   <Home size={18} className="text-[#f5b700]" />
                 </div>
@@ -292,7 +290,7 @@ export default function PresenceMap() {
                   <div className="text-[11px] text-slate-500">Viviendas</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4 lg:p-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#f5b700]/15">
                   <Building2 size={18} className="text-[#f5b700]" />
                 </div>

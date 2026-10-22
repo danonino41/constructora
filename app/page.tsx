@@ -13,7 +13,7 @@ export default function Home() {
     <>
       {/* INICIO: Hero (mensaje clave + CTAs) + Slider de programas + 3 tarjetas de acceso directo */}
       <Hero />
-      <LazySection Comp={PresenceMap} minHeight={900} />
+      <LazySection Comp={PresenceMap} minHeight={550} />
       <LazySection Comp={Testimonials} minHeight={520} />
 
       <section className="py-24" style={{ background: "#173B66" }}>

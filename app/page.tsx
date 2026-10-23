@@ -6,6 +6,7 @@ import Hero from "@/sections/Hero";
 import { LazySection } from "@/components/common/LazySection";
 
 const Testimonials = lazy(() => import("@/sections/Testimonials"));
+const Gallery = lazy(() => import("@/sections/Gallery"));
 const PresenceMap = lazy(() => import("@/components/inicio/PresenceMap"));
 
 export default function Home() {
@@ -13,8 +14,9 @@ export default function Home() {
     <>
       {/* INICIO: Hero (mensaje clave + CTAs) + Slider de programas + 3 tarjetas de acceso directo */}
       <Hero />
-      <LazySection Comp={PresenceMap} minHeight={550} />
       <LazySection Comp={Testimonials} minHeight={520} />
+      <LazySection id="galeria" Comp={Gallery} minHeight={620} />
+      <LazySection Comp={PresenceMap} minHeight={550} />
 
       <section className="py-24" style={{ background: "#173B66" }}>
         <div className="max-w-7xl mx-auto px-6 text-center">

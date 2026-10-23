@@ -29,7 +29,6 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Servicios", href: "/servicios" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "FAQs", href: "/faqs" },
-  { label: "Galería", href: "/galeria" },
 ];
 
 export const PROGRAM_LINKS: NavLink[] = [
@@ -38,13 +37,13 @@ export const PROGRAM_LINKS: NavLink[] = [
   { label: "Crédito MiVivienda", href: "/programas/credito-mivivienda" },
 ];
 
-export type Service = { icon: LucideIcon; title: string; desc: string };
+export type Service = { slug: string; icon: LucideIcon; title: string; desc: string };
 
 export const SERVICES: Service[] = [
-  { icon: Building2, title: "Construcción a llave", desc: "Entregamos tu vivienda lista para habitar. Nos encargamos de todo el proceso constructivo con materiales de primera calidad." },
-  { icon: Award, title: "Diseño arquitectónico", desc: "Planos 3D personalizados, renders fotorrealistas y asesoría de arquitectos certificados para tu proyecto ideal." },
-  { icon: CheckCircle, title: "Habilitación urbana", desc: "Gestión completa de licencias, permisos municipales y trámites legales para tu terreno o proyecto." },
-  { icon: Clock, title: "Plazos garantizados", desc: "Cumplimos los cronogramas pactados. Penalidad por demora en contrato. Tu inversión protegida desde el día uno." },
+  { slug: "construccion-a-llave", icon: Building2, title: "Construcción a llave", desc: "Entregamos tu vivienda lista para habitar. Nos encargamos de todo el proceso constructivo con materiales de primera calidad." },
+  { slug: "diseno-arquitectonico", icon: Award, title: "Diseño arquitectónico", desc: "Planos 3D personalizados, renders fotorrealistas y asesoría de arquitectos certificados para tu proyecto ideal." },
+  { slug: "habilitacion-urbana", icon: CheckCircle, title: "Habilitación urbana", desc: "Gestión completa de licencias, permisos municipales y trámites legales para tu terreno o proyecto." },
+  { slug: "plazos-garantizados", icon: Clock, title: "Plazos garantizados", desc: "Cumplimos los cronogramas pactados. Penalidad por demora en contrato. Tu inversión protegida desde el día uno." },
 ];
 
 export type Stat = { value: string; label: string };

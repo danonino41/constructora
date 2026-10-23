@@ -216,7 +216,7 @@ export default function SliderProgramas() {
         </div>
 
         {/* Dots + contador + play */}
-        <div className="absolute left-0 right-0 bottom-0 flex items-center justify-between gap-4 px-6 pb-6">
+        <div className="absolute left-0 right-0 bottom-0 flex items-center justify-between gap-4 pl-6 pr-24 pb-6">
           <div className="flex items-center gap-2.5">
             {SLIDES.map((s, i) => (
               <button

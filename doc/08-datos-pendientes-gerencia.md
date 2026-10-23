@@ -152,6 +152,44 @@ Cifras y condiciones en `src/data/programas.ts` deben validarse antes de publica
 
 ---
 
+## 8. Servicios (PRIORIDAD ALTA)
+
+Hoy la web muestra 4 servicios: **construcción a llave**, **diseño arquitectónico**,
+**habilitación urbana** y **plazos garantizados**. Necesitamos confirmar el alcance real
+para que las páginas de detalle no prometan algo que la empresa no ejecuta.
+
+8.1. ¿Cuál es la **lista exacta de servicios** que ofrece la empresa? Marcar los actuales
+     y agregar los que falten: ______________________________________________________
+
+8.2. Para cada servicio, ¿**qué incluye y qué no incluye**?
+     - Construcción a llave: _______________________________________________________
+     - Diseño arquitectónico: ______________________________________________________
+     - Habilitación urbana: ________________________________________________________
+     - Plazos garantizados: ________________________________________________________
+
+8.3. ¿Cuál es el **proceso real** de cada servicio (etapas, responsables y documentos)?
+     ______________________________________________________________________________
+
+8.4. ¿La **habilitación urbana** es un servicio que se ofrece actualmente? ¿Incluye
+     licencias, permisos y seguimiento municipal, o solo parte del trámite? ____________
+
+8.5. ¿El **diseño arquitectónico** se hace con equipo propio o con un estudio externo?
+     ¿Incluye planos para licencia y renders 3D? ___________________________________
+
+8.6. ¿La **construcción a llave** incluye materiales y acabados? ¿Qué **garantía escrita**
+     se entrega y por cuánto tiempo? _______________________________________________
+
+8.7. ¿La **penalidad por demora** está en todos los contratos? ¿Cómo se calcula y qué
+     causas quedan excluidas? ______________________________________________________
+
+8.8. ¿Qué **fotos o videos** autorizan usar como evidencia de cada servicio? ___________
+
+8.9. ¿Existen **testimonios o casos** que se puedan citar por servicio? _______________
+
+8.10. ¿Cuánto demora cada servicio (plazos referenciales)? __________________________
+
+---
+
 ## Resumen de campos bloqueantes para el mapa
 
 Estos son los que, **si se responden, permiten dejar el mapa 100% funcional**:

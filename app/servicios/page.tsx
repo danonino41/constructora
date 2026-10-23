@@ -2,13 +2,10 @@ import Services from "@/sections/Services";
 
 export const metadata = {
   title: "Servicios | Consorcio Constructor",
-  description: "Construcción a llave, diseño arquitectónico, habilitación urbana y plazos garantizados.",
+  description:
+    "Construimos tu vivienda de principio a fin: evaluación, expediente, bono y obra con supervisión técnica hasta la entrega de llaves.",
 };
 
 export default function Servicios() {
-  return (
-    <div className="pt-32">
-      <Services />
-    </div>
-  );
+  return <Services />;
 }

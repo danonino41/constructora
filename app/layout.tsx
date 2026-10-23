@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import "@/styles/index.css";
 import Navbar from "@/sections/Navbar";
 import Footer from "@/sections/Footer";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import ScrollManager from "./ScrollManager";
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({
           </Suspense>
           <main>{children}</main>
           <Footer />
+          <WhatsAppWidget />
         </div>
       </body>
     </html>

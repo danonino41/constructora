@@ -13,6 +13,8 @@ Carpeta central de referencia del proyecto web. Aquí se guardan y actualizan la
 | [05-guia-de-marca.md](./05-guia-de-marca.md) | Paleta, tipografía, logo y tono de voz de la marca |
 | [06-mantenimiento-tecnico.md](./06-mantenimiento-tecnico.md) | Cómo correr el proyecto y editar contenido (Guía para el equipo) |
 | [07-contenido-programas-faqs.md](./07-contenido-programas-faqs.md) | Borrador de textos de programas y FAQs (pendiente de validar) |
+| [08-datos-pendientes-gerencia.md](./08-datos-pendientes-gerencia.md) | Cuestionario de datos que faltan confirmar con gerencia (cifras, sedes, cobertura) |
+| [09-manual-tecnico.md](./09-manual-tecnico.md) | **Manual técnico integral**: arquitectura, rutas, componentes, datos, estilos, despliegue, troubleshooting y checklist QA |
 
 ## Cómo mantenerlo
 

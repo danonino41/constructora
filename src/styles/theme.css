@@ -236,3 +236,12 @@
     line-height: 1.5;
   }
 }
+
+.whatsapp-widget {
+  transition: opacity 180ms ease;
+}
+
+body[data-mega-menu="open"] .whatsapp-widget {
+  opacity: 0;
+  pointer-events: none;
+}

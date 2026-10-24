@@ -12,7 +12,7 @@ desarrollador para cambiar textos, fotos o datos de contacto).
 ```bash
 npm install        # solo la primera vez (o tras clonar el repo)
 npm run dev        # servidor de desarrollo → http://localhost:3000
-npm run build      # compilación de producción (verificar SIEMPRE que termine con "✓ Generating static pages (15/15)")
+npm run build      # compilación de producción (verificar SIEMPRE que termine con "✓ Generating static pages (19/19)")
 npm run start      # levanta el build de producción
 ```
 
@@ -30,7 +30,8 @@ npm run build
 | Qué quieres editar | Dónde |
 |---|---|
 | Menú del header | `NAV_LINKS` → `src/data/content.ts` |
-| Dropdown "Programas" del header | `PROGRAM_LINKS` → `src/data/content.ts` |
+| Mega-menú "Programas" del header | `PROGRAM_LINKS` → `src/data/content.ts` |
+| Mega-menú "Servicios" del header | `SERVICES` → `src/data/content.ts` |
 | Datos de la empresa (stats del inicio) | `STATS` → `src/data/content.ts` |
 | Teléfonos / WhatsApp / email / dirección | `CONTACT` → `src/data/content.ts` |
 | Testimonios | `TESTIMONIALS` → `src/data/content.ts` |
@@ -38,9 +39,11 @@ npm run build
 | Servicios | `SERVICES` → `src/data/content.ts` |
 | Quiz de requisitos (programas) | `QUIZ_PROGRAMS` y `QUIZ_STEPS` → `src/data/content.ts` |
 | Textos largos de cada programa | `PROGRAMAS_DETALLE` → `src/data/programas.ts` |
+| Textos largos de cada servicio | `SERVICIOS_DETALLE` → `src/data/servicios.ts` |
 | Mapa (regiones, sedes, zonas, leyenda) | `ZONES`, `OFFICES`, `REGION_LEGEND` → `src/components/inicio/PresenceMap.tsx` |
 | Formulario de contacto | `src/sections/Contact.tsx` (función `buildMessage`) |
 | Slider principal de la home | `src/components/inicio/SliderProgramas.tsx` |
+| WhatsApp flotante (3 asesores) | `src/components/WhatsAppWidget.tsx` + `CONTACT.phones` |
 | Fotos de los modelos de vivienda | `public/modelos/` y `src/components/proyectos/ModelosGaleria.jsx` |
 | Colores globales / fuentes | `src/styles/theme.css` y `src/styles/fonts.css` |
 
@@ -86,7 +89,7 @@ npm run build
 - Checklist de publicación: sección 12 del manual técnico.
 
 ## Antes de dar por terminado un cambio
-- [ ] `npm run build` terminó con `✓ Generating static pages (15/15)`.
+- [ ] `npm run build` terminó con `✓ Generating static pages (19/19)`.
 - [ ] Se revisaron las páginas afectadas en `http://localhost:3000`.
 - [ ] Los enlaces (WhatsApp, correo, Mapas, redes) abren bien.
 - [ ] Si se tocaron cifras o ubicaciones, están confirmadas por gerencia

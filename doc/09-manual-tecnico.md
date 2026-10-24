@@ -128,7 +128,7 @@ constructora/
 ```bash
 npm install        # instalar dependencias
 npm run dev        # servidor de desarrollo → http://localhost:3000
-npm run build      # compila y prerenderiza las 15 rutas en .next/
+npm run build      # compila y prerenderiza las 19 rutas en .next/
 npm run start      # sirve el build de producción (requiere npm run build antes)
 npm run lint       # ESLint de Next
 ```
@@ -138,7 +138,7 @@ npm run lint       # ESLint de Next
 ```bash
 npm run build
 ```
-Debe terminar con `✓ Generating static pages (15/15)` y listar las 15 rutas. Si aparece
+Debe terminar con `✓ Generating static pages (19/19)` y listar las 19 rutas. Si aparece
 `Cannot find module for page: /_not-found`, borra la caché y recompila:
 
 ```bash
@@ -155,7 +155,7 @@ Todas las rutas son públicas y se prerenderizan en build.
 
 | Ruta | Archivo | Render | Contenido |
 |---|---|---|---|
-| `/` | `app/page.tsx` | SSG (client) | Slider de programas, stats, acceso directo, mapa, testimonios, CTA |
+| `/` | `app/page.tsx` | SSG (client) | Slider de programas, stats, acceso directo, testimonios, galería, mapa, CTA |
 | `/contacto` | `app/contacto/page.tsx` | SSG | Sección `Contact` |
 | `/faqs` | `app/faqs/page.tsx` | SSG | Sección `Faq` |
 | `/galeria` | `app/galeria/page.tsx` | SSG | Sección `Gallery` (carrusel Embla de Facebook) |
@@ -164,7 +164,8 @@ Todas las rutas son públicas y se prerenderizan en build.
 | `/programas/[slug]` | `app/programas/[slug]/page.tsx` | SSG | Detalle de cada programa |
 | `/proyectos` | `app/proyectos/page.tsx` | SSG | Sección `Projects` + modal de planos |
 | `/requisitos` | `app/requisitos/page.tsx` | SSG | Requisitos, topes, quiz y FAQs |
-| `/servicios` | `app/servicios/page.tsx` | SSG | Sección `Services` |
+| `/servicios` | `app/servicios/page.tsx` | SSG | Sección `Services` con hero/slider |
+| `/servicios/[slug]` | `app/servicios/[slug]/page.tsx` | SSG | Detalle de cada servicio |
 | `/_not-found` | — | SSG | 404 por defecto de Next |
 
 ### Página dinámica `/programas/[slug]`
@@ -194,6 +195,12 @@ export default async function ProgramaDetalle({ params }: { params: Promise<{ sl
 Slugs válidos (deben coincidir con las claves de `PROGRAMAS_DETALLE`):
 `techo-propio` · `credito-mivivienda` · `reforzamiento`
 
+### Página dinámica `/servicios/[slug]`
+
+Usa la misma mecánica estática que `/programas/[slug]`, pero con `SERVICIOS_DETALLE`
+(`src/data/servicios.ts`) y `generateStaticParams`. Slugs válidos:
+`construccion-a-llave` · `diseno-arquitectonico` · `habilitacion-urbana` · `plazos-garantizados`.
+
 ### Navegación y scroll
 
 - Los enlaces internos usan `next/link` con `href` (nunca `to`).
@@ -208,12 +215,24 @@ Slugs válidos (deben coincidir con las claves de `PROGRAMAS_DETALLE`):
 
 ## 5. Componentes clave
 
-### `src/sections/Navbar.tsx` — header fijo con modo transparente
-- `position: fixed`, `z-50`, altura ≈ 126 px en escritorio.
+### `src/sections/Navbar.tsx` — header fijo con mega-menús
+- `position: fixed`, `z-50`, altura ≈ 127 px en escritorio (`--header-h`).
 - **Transparente** solo en `/` y sin scroll: fondo `transparent`, textos blancos
-  (`linkColor`). Al hacer scroll (`scrollY > 24`) pasa a blanco translúcido con `blur(14px)`.
-- El dropdown de "Programas" se cierra con `setOpen(false)` al cambiar de ruta.
-- Menú móvil desplegable por debajo del header.
+  (`linkColor`). Al hacer scroll (`scrollY > 24`) o abrir un menú pasa a blanco
+  translúcido con `blur(14px)`.
+- Mega-menús de **Programas** y **Servicios** abiertos por clic (no hover): panel flotante
+  centrado, overlay oscuro con `backdrop-blur`, scroll bloqueado y cierre con clic fuera,
+  `Escape` o cambio de ruta.
+- Subrayado amarillo en el ítem activo, incluidas rutas hijas `/programas/[slug]` y
+  `/servicios/[slug]`.
+- En móvil no hay mega-menú: "Programas" y "Servicios" se expanden como acordeón dentro
+  del menú desplegable.
+
+### `src/components/WhatsAppWidget.tsx` — acceso directo flotante
+- Botón fijo abajo-derecha con panel de **3 asesores** (`CONTACT.phones`).
+- Cada opción abre `wa.me/51...` con mensaje prellenado; cierra con clic fuera o `Escape`.
+- Se monta globalmente en `app/layout.tsx`; en móvil queda por encima del contenido,
+  por lo que los controles de sliders usan `pr-*` para no quedar debajo.
 
 ### `src/components/inicio/SliderProgramas.tsx` — visual principal
 - Carrusel con **Embla** (`embla-carousel-react`), `loop: true`.
@@ -259,19 +278,20 @@ elegido. Sus datos están en `QUIZ_PROGRAMS` y `QUIZ_STEPS` (`src/data/content.t
 
 ## 6. Datos y contenido
 
-Todo el contenido editable vive en **`src/data/content.ts`** y **`src/data/programas.ts`**.
+Todo el contenido editable vive en **`src/data/content.ts`**, **`src/data/programas.ts`** y **`src/data/servicios.ts`**.
 
 | Qué editar | Dónde |
 |---|---|
 | Menú del header | `NAV_LINKS` (`content.ts`) |
-| Dropdown "Programas" | `PROGRAM_LINKS` (`content.ts`) |
-| Servicios | `SERVICES` (`content.ts`) |
+| Mega-menú "Programas" | `PROGRAM_LINKS` (`content.ts`) |
+| Mega-menú "Servicios" | `SERVICES` (`content.ts`) |
 | Cifras institucionales (stats) | `STATS` (`content.ts`) |
 | Teléfonos, WhatsApp, email, redes, sedes | `CONTACT` (`content.ts`) |
 | Testimonios | `TESTIMONIALS` (`content.ts`) |
 | Publicaciones de Facebook (Galería) | `FB_POSTS` (`content.ts`) |
 | Quiz de requisitos | `QUIZ_PROGRAMS` y `QUIZ_STEPS` (`content.ts`) |
 | Contenido largo de cada programa | `PROGRAMAS_DETALLE` (`src/data/programas.ts`) |
+| Contenido largo de cada servicio | `SERVICIOS_DETALLE` (`src/data/servicios.ts`) |
 | Fechas/datos del mapa | `ZONES`, `OFFICES`, `REGION_LEGEND` (`PresenceMap.tsx`) |
 
 ### Datos pendientes de confirmar con la gerencia
@@ -401,7 +421,7 @@ const nextConfig: NextConfig = { reactStrictMode: true };
 
 ### Build de producción
 ```bash
-npm run build     # genera .next/ con las 15 rutas prerenderizadas
+npm run build     # genera .next/ con las 19 rutas prerenderizadas
 npm run start     # servidor Node local (para probar)
 ```
 
@@ -420,9 +440,11 @@ npm run start     # servidor Node local (para probar)
 
 ## 12. Checklist antes de publicar
 
-- [ ] `npm run build` termina con `✓ Generating static pages (15/15)` sin errores.
+- [ ] `npm run build` termina con `✓ Generating static pages (19/19)` sin errores.
 - [ ] `npm run lint` sin errores.
-- [ ] Las 12 URLs públicas responden 200 (home, 8 secciones y los 3 slugs de programas).
+- [ ] Las 16 URLs públicas responden 200 (home, 8 secciones, 3 slugs de programas y 4 de servicios).
+- [ ] Los mega-menús de Programas/Servicios abren y cierran con clic, `Escape` y overlay;
+      en móvil funcionan como acordeón.
 - [ ] WhatsApp, correo y las 3 sedes abren correctamente (`wa.me`, `mailto`, Maps).
 - [ ] Los `metadata` de cada ruta tienen el título y descripción correctos.
 - [ ] Imágenes de `public/` comprimidas (< 500 KB).

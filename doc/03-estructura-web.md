@@ -3,18 +3,22 @@
 Mapa de referencia del sitio `consorcio-constructor`, para ubicar secciones y componentes al momento de aplicar las observaciones del CEO. Rutas relativas a la raíz del repo.
 
 ## Stack
-- **Vite + React + TypeScript** (SPA de una sola página, todo en `src/app/App.tsx`).
-- **Tailwind CSS** para estilos + estilos inline (fuente Myriad Pro, colores de marca).
-- **embla-carousel-react 8.6.0** para carruseles (Hero e inicio, Galería).
+- **Next.js 15 + React 18 + TypeScript** (App Router, rutas en `app/`).
+- **Tailwind CSS 4** para estilos + estilos inline (fuente Myriad Pro, colores de marca).
+- **embla-carousel-react 8.6.0** para carruseles (SliderProgramas, hero de Servicios y Galería).
 - **lucide-react** para iconos.
 - Build de producción: `npm run build`.
 - Archivos públicos: `public/PublicacionesFB/` (`banner.jpeg`, `IMG1.jpeg`–`IMG7.jpeg`), `public/imports/` (`logo`, `VIDEO_RECORRIDO_3D.mp4`, imágenes de proyectos).
 
-## Mapa de secciones (`App.tsx`)
+## Mapa de secciones (referencia)
+
+> La estructura vigente y el detalle de archivos están en
+> [`09-manual-tecnico.md`](./09-manual-tecnico.md). Este mapa conserva nombres de la
+> versión anterior (Vite/SPA) y solo se mantiene como referencia histórica.
 
 | Sección | id | Componente (línea) | Contenido |
 |---|---|---|---|
-| Header | — | `Navbar` (~201) | logo, menú (Inicio, Proyectos, Requisitos, Servicios, Nosotros, Galería, Contacto), botón "COTIZAR AHORA", menú móvil; fondo oscuro translúcido arriba, blanco al scrollear |
+| Header | — | `Navbar` | logo, menú (Inicio, Programas, Requisitos, Proyectos, Servicios, Nosotros, FAQs), mega-menús de Programas/Servicios, CTA "SOLICITA INFORMACIÓN", menú móvil; transparente en la home sin scroll y blanco con blur al scrollear o abrir un menú |
 | Inicio | `#inicio` | `Hero` (~271) | slideshow a pantalla completa (banner + 7 fotos de PublicacionesFB), autoplay 6s, badge "CONSTRUCTORA LÍDER EN PERÚ" centrado, barra de stats |
 | Requisitos | `#requisitos` | `QualificationQuiz` (~332) | quiz interactivo "¿Con cuál puedes calificar?" (5 pasos) + resultados por programa |
 | Proyectos | `#proyectos` | `Projects` (~701) | modelos con modal de planos (`PlanosModal`, ~656) |
@@ -29,7 +33,7 @@ Mapa de referencia del sitio `consorcio-constructor`, para ubicar secciones y co
 ## Datos clave definidos en el archivo
 | Constante (línea) | Uso |
 |---|---|
-| `NAV_LINKS` (15) | ítems del menú |
+| `NAV_LINKS` (7) | ítems del menú |
 | `SERVICES` (25) | tarjetas de servicios |
 | `STATS` (32) | indicadores del Hero (3,367 familias / 11 años / +10 profesionales / 1ª vivienda) |
 | `CONTACT` (39) | teléfono, WhatsApp, email, dirección |

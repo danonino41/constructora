@@ -14,17 +14,27 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { NAV_LINKS, PROGRAM_LINKS, SERVICES } from "@/data/content";
+import { PROYECTOS_MODELOS } from "@/data/proyectos";
 import logo from "@/imports/logo.png";
 
 const FONT = '"Myriad Pro", "Segoe UI", sans-serif';
 
-type MenuKey = "Programas" | "Servicios";
+type MenuKey = "Programas" | "Servicios" | "Proyectos";
 
 type MenuItem = {
   label: string;
   href: string;
-  icon: LucideIcon;
-  desc: string;
+  icon?: LucideIcon;
+  desc?: string;
+  meta?: string;
+};
+
+type MenuGroup = {
+  label: string;
+  title: string;
+  subtitle: string;
+  href: string;
+  items: MenuItem[];
 };
 
 type MenuConfig = {
@@ -33,7 +43,8 @@ type MenuConfig = {
   desc: string;
   href: string;
   cta: string;
-  items: MenuItem[];
+  items?: MenuItem[];
+  groups?: MenuGroup[];
 };
 
 const PROGRAM_META: Record<string, { icon: LucideIcon; desc: string }> = {
@@ -72,6 +83,18 @@ const SERVICE_ITEMS: MenuItem[] = SERVICES.map((service) => ({
   desc: SERVICE_DESCRIPTIONS[service.slug] ?? service.desc,
 }));
 
+const PROJECT_GROUPS: MenuGroup[] = PROYECTOS_MODELOS.map((modelo) => ({
+  label: modelo.label.toUpperCase(),
+  title: modelo.title,
+  subtitle: modelo.subtitle,
+  href: `/proyectos/${modelo.slug}`,
+  items: modelo.ejemplos.map((ejemplo) => ({
+    label: ejemplo.shortName,
+    href: `/proyectos/${modelo.slug}#${ejemplo.slug}`,
+    meta: ejemplo.area,
+  })),
+}));
+
 const MENUS: Record<MenuKey, MenuConfig> = {
   Programas: {
     eyebrow: "PROGRAMAS",
@@ -89,7 +112,20 @@ const MENUS: Record<MenuKey, MenuConfig> = {
     cta: "Ver todos los servicios",
     items: SERVICE_ITEMS,
   },
+  Proyectos: {
+    eyebrow: "PROYECTOS",
+    title: "Elige el modelo para tu familia",
+    desc: "Dos modelos de vivienda y varios diseños según el tamaño de tu lote.",
+    href: "/proyectos",
+    cta: "Ver todos los proyectos",
+    groups: PROJECT_GROUPS,
+  },
 };
+
+const MENU_KEYS: MenuKey[] = ["Programas", "Servicios", "Proyectos"];
+
+const getMenuKey = (label: string): MenuKey | null =>
+  MENU_KEYS.includes(label as MenuKey) ? (label as MenuKey) : null;
 
 function ActiveLine() {
   return (
@@ -130,10 +166,12 @@ export default function Navbar() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.body.dataset.megaMenu = "open";
     document.addEventListener("keydown", onKeyDown);
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      delete document.body.dataset.megaMenu;
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [menu]);
@@ -236,7 +274,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-0.5 lg:gap-1 xl:gap-3">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
-            const menuKey = link.label === "Programas" || link.label === "Servicios" ? (link.label as MenuKey) : null;
+            const menuKey = getMenuKey(link.label);
 
             if (menuKey) {
               const isOpen = menu === menuKey;
@@ -348,48 +386,102 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <div className="grid content-start gap-2 sm:grid-cols-2">
-                  {MENUS[menu].items.map((item) => {
-                    const Icon = item.icon;
-                    const activeItem = isActive(item.href);
-
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setMenu(null)}
-                        aria-current={activeItem ? "page" : undefined}
-                        className={`group flex gap-3 rounded-xl p-3.5 transition-colors ${activeItem ? "bg-[#fff8e1]" : "hover:bg-[#f7f8fa]"}`}
-                      >
-                        <span
-                          className="grid shrink-0 place-items-center"
-                          style={{
-                            width: 38,
-                            height: 38,
-                            borderRadius: 10,
-                            background: activeItem ? "#f5b700" : "#eef2f7",
-                            color: activeItem ? "#0d0f14" : "#173B66",
-                          }}
+                {MENUS[menu].groups ? (
+                  <div className="grid content-start gap-x-6 gap-y-5 sm:grid-cols-2">
+                    {MENUS[menu].groups?.map((group) => (
+                      <div key={group.href} className="min-w-0">
+                        <Link
+                          href={group.href}
+                          onClick={() => setMenu(null)}
+                          className="group -mx-2 flex items-start justify-between gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-[#f7f8fa]"
                         >
-                          <Icon size={18} />
-                        </span>
-                        <span className="min-w-0">
-                          <span className="flex items-center gap-2" style={{ fontFamily: FONT, fontSize: "0.9rem", fontWeight: 700, color: "#2f3338" }}>
-                            {item.label}
-                            {activeItem && (
-                              <span style={{ fontFamily: FONT, fontSize: "0.58rem", fontWeight: 700, color: "#b58900", letterSpacing: "0.08em" }}>
-                                ACTUAL
+                          <span className="min-w-0">
+                            <span className="block" style={{ fontFamily: FONT, fontSize: "0.62rem", fontWeight: 700, color: "#b58900", letterSpacing: "0.16em" }}>
+                              {group.label}
+                            </span>
+                            <span className="mt-0.5 block" style={{ fontFamily: FONT, fontSize: "0.95rem", fontWeight: 700, color: "#2f3338" }}>
+                              {group.title}
+                            </span>
+                            <span className="mt-1 block" style={{ fontFamily: FONT, fontSize: "0.74rem", lineHeight: 1.5, color: "#7b8490" }}>
+                              {group.subtitle}
+                            </span>
+                          </span>
+                          <ArrowRight size={15} style={{ color: "#f5b700", marginTop: 4, flexShrink: 0 }} />
+                        </Link>
+
+                        <div className="mt-2 flex flex-col" style={{ borderTop: "1px solid #eef0f3" }}>
+                          {group.items.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              onClick={() => setMenu(null)}
+                              className="group -mx-2 flex items-center justify-between gap-3 rounded-md px-2 py-[0.42rem] transition-colors hover:bg-[#f7f8fa]"
+                            >
+                              <span className="truncate" style={{ fontFamily: FONT, fontSize: "0.8rem", fontWeight: 500, color: "#4a4a49" }}>
+                                {item.label}
                               </span>
-                            )}
+                              <span className="shrink-0" style={{ fontFamily: FONT, fontSize: "0.68rem", color: "#8a9199" }}>
+                                {item.meta}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+
+                        <Link
+                          href={group.href}
+                          onClick={() => setMenu(null)}
+                          className="mt-2 inline-flex items-center gap-1.5 font-bold transition-all hover:gap-2.5"
+                          style={{ fontFamily: FONT, fontSize: "0.72rem", letterSpacing: "0.06em", color: "#173B66" }}
+                        >
+                          VER {group.label} <ArrowRight size={13} style={{ color: "#f5b700" }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid content-start gap-2 sm:grid-cols-2">
+                    {(MENUS[menu].items ?? []).map((item) => {
+                      const Icon = item.icon ?? Home;
+                      const activeItem = isActive(item.href);
+
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setMenu(null)}
+                          aria-current={activeItem ? "page" : undefined}
+                          className={`group flex gap-3 rounded-xl p-3.5 transition-colors ${activeItem ? "bg-[#fff8e1]" : "hover:bg-[#f7f8fa]"}`}
+                        >
+                          <span
+                            className="grid shrink-0 place-items-center"
+                            style={{
+                              width: 38,
+                              height: 38,
+                              borderRadius: 10,
+                              background: activeItem ? "#f5b700" : "#eef2f7",
+                              color: activeItem ? "#0d0f14" : "#173B66",
+                            }}
+                          >
+                            <Icon size={18} />
                           </span>
-                          <span className="mt-1 line-clamp-2" style={{ fontFamily: FONT, fontSize: "0.76rem", lineHeight: 1.55, color: "#7b8490" }}>
-                            {item.desc}
+                          <span className="min-w-0">
+                            <span className="flex items-center gap-2" style={{ fontFamily: FONT, fontSize: "0.9rem", fontWeight: 700, color: "#2f3338" }}>
+                              {item.label}
+                              {activeItem && (
+                                <span style={{ fontFamily: FONT, fontSize: "0.58rem", fontWeight: 700, color: "#b58900", letterSpacing: "0.08em" }}>
+                                  ACTUAL
+                                </span>
+                              )}
+                            </span>
+                            <span className="mt-1 line-clamp-2" style={{ fontFamily: FONT, fontSize: "0.76rem", lineHeight: 1.55, color: "#7b8490" }}>
+                              {item.desc}
+                            </span>
                           </span>
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -399,7 +491,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-t border-gray-200 px-5 py-5 flex flex-col gap-3 shadow-lg max-h-[80vh] overflow-y-auto">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
-            const menuKey = link.label === "Programas" || link.label === "Servicios" ? (link.label as MenuKey) : null;
+            const menuKey = getMenuKey(link.label);
 
             if (menuKey) {
               const isExpanded = mobileSection === menuKey;
@@ -424,17 +516,52 @@ export default function Navbar() {
 
                   {isExpanded && (
                     <div className="mt-1.5 flex flex-col gap-1 border-l-2 pl-4" style={{ borderColor: "#f5b700" }}>
-                      {MENUS[menuKey].items.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setOpen(false)}
-                          className="py-1.5 text-sm text-gray-600 transition-colors hover:text-primary"
-                          style={{ fontFamily: FONT }}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
+                      {MENUS[menuKey].groups ? (
+                        MENUS[menuKey].groups?.map((group) => (
+                          <div key={group.href} className="py-1.5">
+                            <Link
+                              href={group.href}
+                              onClick={() => setOpen(false)}
+                              className="flex items-center justify-between gap-3 py-1 text-sm font-bold transition-colors hover:text-primary"
+                              style={{ fontFamily: FONT, color: "#173B66" }}
+                            >
+                              <span>
+                                <span className="block" style={{ fontSize: "0.62rem", letterSpacing: "0.14em", color: "#b58900" }}>
+                                  {group.label}
+                                </span>
+                                {group.title}
+                              </span>
+                              <ArrowRight size={14} style={{ color: "#f5b700" }} />
+                            </Link>
+                            <div className="mt-1 flex flex-col">
+                              {group.items.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  onClick={() => setOpen(false)}
+                                  className="flex items-center justify-between gap-3 py-1 text-sm text-gray-600 transition-colors hover:text-primary"
+                                  style={{ fontFamily: FONT }}
+                                >
+                                  <span>{item.label}</span>
+                                  <span style={{ fontSize: "0.72rem", color: "#8a9199" }}>{item.meta}</span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        (MENUS[menuKey].items ?? []).map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className="py-1.5 text-sm text-gray-600 transition-colors hover:text-primary"
+                            style={{ fontFamily: FONT }}
+                          >
+                            {item.label}
+                          </Link>
+                        ))
+                      )}
                     </div>
                   )}
                 </div>

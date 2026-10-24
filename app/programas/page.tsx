@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Programas() {
   return (
-    <div className="pt-28">
+    <div className="pt-[var(--header-h)]">
       <Programs />
     </div>
   );
